@@ -52,7 +52,19 @@ public class Controller{
 
     }
 
+    public boolean modifyBook(String idBModify, String nameBPModify, int numPagesModify, int dayBModify, int monthBModify, int yearBModify, String URLModify, String reviewShortModify, int genderIndexModify, double sellingValueModify, int numCopiesModify){
+        
 
+
+        return false; 
+    }
+
+    public boolean modifyMagazine(String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSuscriptionModify, String emissionPeriodModify, int numSuscriptionModify){
+
+
+
+        return false;
+    }
 
     public boolean deleteBook(String idB) {
         // Recorrer la lista de libros
@@ -79,6 +91,31 @@ public class Controller{
             }
         }
         return false;
+    }
+
+    public String getProducts(){
+        String msg = "";
+
+        for(int i=0; i>listAllBibliographicProducts.size();i++){
+
+             msg = "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+
+        }
+        
+        return msg;
+    }
+
+    public String getBPBook(){
+        
+        String msg = "";
+
+        for(int i=0; i>listAllBibliographicProducts.size();i++){
+
+             msg = "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+
+        }
+        
+        return msg;
     }
 
 

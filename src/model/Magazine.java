@@ -12,6 +12,11 @@ public class Magazine extends BibliographicProducts{
 
     public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSuscription, String emissionPeriod, int numSuscription) {
         super(id, nameBP, numPages, publicateDate, URL, acumReadPages);
+
+        this.category = category;
+        this.valueSuscription = valueSuscription;
+        this.emissionPeriod = emissionPeriod;
+        this.numSuscription = numSuscription;
     }
 
 

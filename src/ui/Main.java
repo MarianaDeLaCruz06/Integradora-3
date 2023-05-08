@@ -192,6 +192,7 @@ public class Main{
             System.out.println("The book could not be registered");
         }
     }
+
     public void registerMagazine(){
 
         reader.nextLine();
@@ -237,30 +238,153 @@ public class Main{
 
     }
 
+    public void modifyBook(){
+        String view = controller.getProducts();
+
+        if(view.equals("")){
+            System.out.println("There are no bibliographic products");
+
+        }else{
+            System.out.println(view);
+
+            System.out.println("Enter the option you want modify");
+
+            System.out.println("* * * * * * * * * * * *");
+            System.out.println("*  Modify a New Book  *");
+            System.out.println("* * * * * * * * * * * *");
+    
+            System.out.println("Enter the book ID:");
+            String idBModify = reader.nextLine();
+            System.out.println("Enter the book name:");
+            String nameBPModify = reader.nextLine();
+            System.out.println("Enter the number of pages:");
+            int numPagesModify = reader.nextInt();
+            System.out.println("Enter the publication day:");
+            int dayBModify = reader.nextInt();
+            System.out.println("Enter the publication month:");
+            int monthBModify = reader.nextInt();
+            System.out.println("Enter the publication year:");
+            int yearBModify = reader.nextInt();
+            System.out.println("Enter the URL:");
+            String URLModify = reader.next();
+            System.out.println("Enter the review:");
+            String reviewShortModify = reader.next();
+            System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
+            int genderIndexModify = reader.nextInt();
+            System.out.println("Enter the selling value:");
+            double sellingValueModify = reader.nextDouble();
+            System.out.println("Enter the number of copies:");
+            int numCopiesModify = reader.nextInt();
+    
+            
+            if (controller.registerBook(idBModify, nameBPModify, numPagesModify, dayBModify, monthBModify, yearBModify, URLModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
+                System.out.println("Book modify successfully!");
+            } else {
+                System.out.println("The book could not be modify");
+            }
+        }
+    
+    }
+
+    public void modifyMagazine(){
+        String view = controller.getProducts();
+
+        if(view.equals("")){
+            System.out.println("There are no bibliographic products");
+
+        }else{
+            System.out.println(view);
+
+            System.out.println("* * * * * * * * * * * * * *");
+            System.out.println("*  Modify a new magazine  *");
+            System.out.println("* * * * * * * * * * * * * *");
+    
+            System.out.println("Enter the ID:");
+            String idMModify = reader.nextLine();
+            System.out.println("Enter the name:");
+            String namePBModify = reader.nextLine();
+            System.out.println("Enter the number of pages:");
+            int numPagesModify = reader.nextInt();
+            System.out.println("Enter the publication day:");
+            int dayMModify = reader.nextInt();
+            System.out.println("Enter the publication month:");
+            int monthMModify = reader.nextInt();
+            System.out.println("Enter the publication year:");
+            int yearMModify = reader.nextInt();
+            System.out.println("Enter the URL:");
+            String URLModify = reader.nextLine();
+            System.out.println("Enter the accumulated read pages:");
+            int acumReadPagesModify = reader.nextInt();
+            System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
+            int categoryIndexModify = reader.nextInt();
+            System.out.println("Enter the value of subscription:");
+            double valueSuscriptionModify = reader.nextDouble();
+            System.out.println("Enter the emission period:");
+            String emissionPeriodModify = reader.nextLine();
+            System.out.println("Enter the number of subscriptions:");
+            int numSuscriptionModify = reader.nextInt();
+    
+            // Registrar la nueva revista en la biblioteca
+            boolean magazineModify = controller.modifyMagazine(idMModify, namePBModify, numPagesModify, dayMModify, monthMModify, yearMModify, URLModify, acumReadPagesModify, categoryIndexModify, valueSuscriptionModify, emissionPeriodModify, numSuscriptionModify);
+    
+            // Comprobar si la revista fue registrada exitosamente
+            if (magazineModify) {
+                System.out.println("Magazine modify successfully");
+            } else {
+                System.out.println("Error modify magazine");
+            }
+        }
+    }
+
     public void deleteBook() {
 
         reader.nextLine();
-        System.out.println("Enter the ID of the book to delete:");
-        String idB = reader.nextLine();
-        boolean deleted = controller.deleteBook(idB);
-        if (deleted) {
-            System.out.println("Book deleted successfully");
-        } else {
-            System.out.println("Error deleting book");
+
+        String view = controller.getProducts();
+
+        if(view.equals("")){
+            System.out.println("There are no bibliographic products");
+        } else{
+            System.out.println(view);
+           
+            System.out.println("Enter the ID of the book to delete:");
+            String idB = reader.nextLine();
+            boolean deleted = controller.deleteBook(idB);
+            if (deleted) {
+                System.out.println("Book deleted successfully");
+            } else {
+                System.out.println("Error deleting book");
+            }
         }
+            
+
+     
     }
 
     public void deleteMagazine() {
 
         reader.nextLine();
-        System.out.println("Enter the ID of the magazine to delete:");
-        String idM = reader.nextLine();
-        boolean deleted = controller.deleteMagazine(idM);
-        if (deleted) {
-            System.out.println("Magazine deleted successfully");
-        } else {
-            System.out.println("Error deleting magazine");
+
+        String view = controller.getProducts();
+
+        if(view.equals("")){
+            System.out.println("There are no bibliographic products");
+        } else{
+            System.out.println(view);
+
+            System.out.println("Enter the ID of the magazine to delete:");
+            String idM = reader.nextLine();
+            boolean deleted = controller.deleteMagazine(idM);
+            if (deleted) {
+                System.out.println("Magazine deleted successfully");
+            } else {
+                System.out.println("Error deleting magazine");
+            }
         }
+
+           
+
+        
     }
     
 

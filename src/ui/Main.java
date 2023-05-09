@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.Scanner;
+
 import model.Controller;
 
 public class Main{
@@ -69,11 +70,11 @@ public class Main{
                         break;
 
                         case 3:
-                            
+                            modifyBook();
                         break;
 
                         case 4:
-                            
+                            modifyMagazine();
                         break;
 
                         case 5:
@@ -176,6 +177,8 @@ public class Main{
         int yearB = reader.nextInt();
         System.out.println("Enter the URL:");
         String URL = reader.next();
+        System.out.println("Enter the pages acum");
+        int acumReadPages = reader.nextInt();
         System.out.println("Enter the review:");
         String reviewShort = reader.next();
         System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
@@ -186,7 +189,7 @@ public class Main{
         int numCopies = reader.nextInt();
 
         
-        if (controller.registerBook(idB, nameBP, numPages, dayB, monthB, yearB, URL, reviewShort, genderIndex, sellingValue, numCopies)) {
+        if (controller.registerBook(idB, nameBP, numPages, dayB, monthB, yearB, URL, acumReadPages, reviewShort, genderIndex, sellingValue, numCopies)) {
             System.out.println("Book registered successfully!");
         } else {
             System.out.println("The book could not be registered");
@@ -252,7 +255,9 @@ public class Main{
             System.out.println("* * * * * * * * * * * *");
             System.out.println("*  Modify a New Book  *");
             System.out.println("* * * * * * * * * * * *");
-    
+            
+            System.out.println("Select the book you werw saying to modify");
+            int optionModify = reader.nextInt();
             System.out.println("Enter the book ID:");
             String idBModify = reader.nextLine();
             System.out.println("Enter the book name:");
@@ -267,6 +272,8 @@ public class Main{
             int yearBModify = reader.nextInt();
             System.out.println("Enter the URL:");
             String URLModify = reader.next();
+            System.out.println("Enter the URL:");
+            int acumReadPagesModify = reader.nextInt();
             System.out.println("Enter the review:");
             String reviewShortModify = reader.next();
             System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
@@ -277,7 +284,7 @@ public class Main{
             int numCopiesModify = reader.nextInt();
     
             
-            if (controller.registerBook(idBModify, nameBPModify, numPagesModify, dayBModify, monthBModify, yearBModify, URLModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
+            if (controller.modifyBook(optionModify, idBModify, nameBPModify, numPagesModify, dayBModify, monthBModify, yearBModify, URLModify, acumReadPagesModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
                 System.out.println("Book modify successfully!");
             } else {
                 System.out.println("The book could not be modify");
@@ -298,7 +305,9 @@ public class Main{
             System.out.println("* * * * * * * * * * * * * *");
             System.out.println("*  Modify a new magazine  *");
             System.out.println("* * * * * * * * * * * * * *");
-    
+            
+            System.out.println("Select the magazine you werw saying to modify");
+            int optionMModify = reader.nextInt();
             System.out.println("Enter the ID:");
             String idMModify = reader.nextLine();
             System.out.println("Enter the name:");
@@ -325,7 +334,7 @@ public class Main{
             int numSuscriptionModify = reader.nextInt();
     
             // Registrar la nueva revista en la biblioteca
-            boolean magazineModify = controller.modifyMagazine(idMModify, namePBModify, numPagesModify, dayMModify, monthMModify, yearMModify, URLModify, acumReadPagesModify, categoryIndexModify, valueSuscriptionModify, emissionPeriodModify, numSuscriptionModify);
+            boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesModify, dayMModify, monthMModify, yearMModify, URLModify, acumReadPagesModify, categoryIndexModify, valueSuscriptionModify, emissionPeriodModify, numSuscriptionModify);
     
             // Comprobar si la revista fue registrada exitosamente
             if (magazineModify) {

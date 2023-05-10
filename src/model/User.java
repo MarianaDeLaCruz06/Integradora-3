@@ -53,6 +53,14 @@ public abstract class User {
         this.formatteDate = formatteDate;
     }
 
+    public boolean buyBook(BibliographicProducts productToBuyB){
+        return false;
+    }
+
+    public boolean suscribeMagazine(BibliographicProducts productToSuscribeM){
+        return false;
+    }
+
     public String toString() {
         String msg = "";
         

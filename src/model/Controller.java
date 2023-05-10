@@ -5,17 +5,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Controller{
-    
-    private ArrayList<Book> listAllBooks;
-    private ArrayList<Magazine> listAllMagazines;
+
     private ArrayList<User> listAllUsers;
     private ArrayList<BibliographicProducts> listAllBibliographicProducts;
 
     public Controller(){
         listAllUsers = new ArrayList<>();
         listAllBibliographicProducts = new ArrayList<>();
-        listAllBooks = new ArrayList<>();
-        listAllMagazines = new ArrayList<>();
     }
 
     public boolean createUser(int userType, String name, String cc, int day, int month, int year){
@@ -37,7 +33,6 @@ public class Controller{
     public boolean registerBook(String id, String nameBP, int numPages, int dayB, int monthB, int yearB, String URL, int acumReadPages, String reviewShort, int genderIndex, double sellingValue, int numCopies){
 
        TypeBook gender = TypeBook.values()[genderIndex-1];
-
 
        Book newBook = new Book(id, nameBP, numPages, new GregorianCalendar(yearB, monthB, dayB), URL, numPages, reviewShort, gender, sellingValue, numCopies);
 
@@ -141,6 +136,48 @@ public class Controller{
         return false;
     }
 
+    public boolean buyBook(String ccUser, String idB){
+        User x = null;
+        Book y = null;
+        for (User user : listAllUsers) {
+            if(user.getCc().equals(ccUser)){
+                x = user;
+            }
+        }
+        for (BibliographicProducts book : listAllBibliographicProducts) {
+            // Verificar si es un libro y si tiene el ID correspondiente
+            if (book instanceof Book && book.getId().equals(idB)) {
+                y = (Book) book;
+            }
+        }
+        if(x==null || y == null){
+            return false;
+        }
+        // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
+        return x.buyBook(y);
+    }
+
+    public boolean suscribeMagazine(String ccUser, String idB){
+        User x = null;
+        Book y = null;
+        for (User user : listAllUsers) {
+            if(user.getCc().equals(ccUser)){
+                x = user;
+            }
+        }
+        for (BibliographicProducts book : listAllBibliographicProducts) {
+            // Verificar si es un libro y si tiene el ID correspondiente
+            if (book instanceof Book && book.getId().equals(idB)) {
+                y = (Book) book;
+            }
+        }
+        if(x==null || y == null){
+            return false;
+        }
+        // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
+        return false;
+    }
+
     public String getProducts(){
         String msg = "";
 
@@ -153,14 +190,18 @@ public class Controller{
         return msg;
     }
 
+
     public String getBPBook(){
 
         String msg = "";
 
-        for(int i=0; i>listAllBooks.size();i++){
+        for(int i=0; i>listAllBibliographicProducts.size();i++){
 
-             msg = "\n" + (i+1) +". "+ listAllBooks.get(i).getId()+"-"+listAllBooks.get(i).getNameBP();
+            if(listAllBibliographicProducts.get(i) instanceof Book){
 
+             msg = "\n" + listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+
+            }
         }
         
         return msg;
@@ -170,10 +211,49 @@ public class Controller{
 
         String msg = "";
 
-        for(int i=0; i>listAllBooks.size();i++){
+        for(int i=0; i>listAllBibliographicProducts.size();i++){
 
-             msg = "\n" + (i+1) +". "+ listAllMagazines.get(i).getId()+"-"+listAllMagazines.get(i).getNameBP();
+            if(listAllBibliographicProducts.get(i) instanceof Magazine){
 
+             msg = "\n" + listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+
+            }
+        }
+        
+        return msg;
+    }
+
+    public String getUsers(){
+        String msg = "";
+
+        for(int i=0; i>listAllUsers.size();i++){
+
+             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+
+        }
+        
+        return msg;
+    }
+
+    public String getUsersRegular(){
+        String msg = "";
+
+        for(int i=0; i>listAllUsers.size();i++){
+            if(listAllUsers.get(i) instanceof UserRegular){
+             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+            }
+        }
+        
+        return msg;
+    }
+
+    public String getUsersPremium(){
+        String msg = "";
+
+        for(int i=0; i>listAllUsers.size();i++){
+            if(listAllUsers.get(i) instanceof UserPremium){
+             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+            }
         }
         
         return msg;

@@ -1,19 +1,10 @@
 package model;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public abstract class BibliographicProducts {
-
-    private ArrayList<Book> listAllBooks;
-    private ArrayList<Magazine> listAllMagazines;
-
-    public BibliographicProducts(){
-        listAllBooks = new ArrayList<>();
-        listAllMagazines = new ArrayList<>();
-    }
-
+    
     private String id;
     private String nameBP;
     private int numPages;

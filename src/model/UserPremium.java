@@ -23,9 +23,9 @@ public class UserPremium extends User{
     }
     
     @Override
-    public boolean suscribeMagazine(Buyable productToSuscribeM) {
-        if (productToSuscribeM instanceof Magazine){
-            Magazine boughtMagazine = new Magazine((Magazine) productToSuscribeM);
+    public boolean subscribeMagazine(Buyable productToSubscribeM) {
+        if (productToSubscribeM instanceof Magazine){
+            Magazine boughtMagazine = new Magazine((Magazine) productToSubscribeM);
             boughtMagazine.buy();
             return listAllBibliographicProducts.add(boughtMagazine);
         } 

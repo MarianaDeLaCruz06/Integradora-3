@@ -168,7 +168,7 @@ public class Controller{
         return userx.buyBook(booky);
     }
 
-    public boolean suscribeMagazine(String ccUser, String idBP){
+    public boolean subscribeMagazine(String ccUser, String idBP){
         User userx = null;
         Book magaziney = null;
         for (User user : listAllUsers) {
@@ -177,7 +177,7 @@ public class Controller{
             }
         }
         for (BibliographicProducts magazine : listAllBibliographicProducts) {
-            // Verificar si es un libro y si tiene el ID correspondiente
+            // Verificar si es una revista y si tiene el ID correspondiente
             if (magazine instanceof Magazine && magazine.getId().equals(idBP)) {
                 magaziney = (Magazine) magazine;
             }
@@ -186,7 +186,7 @@ public class Controller{
             return false;
         }
         // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
-        return false; 
+        return userx.subscribeMagazine(magaziney); 
     }
 
     public boolean generateBill(int optionUserBill, String optionProductBill){

@@ -55,7 +55,7 @@ public abstract class User {
 
     public abstract boolean buyBook(Buyable productToBuyB);
 
-    public abstract boolean suscribeMagazine(BibliographicProducts productToSuscribeM);
+    public abstract boolean subscribeMagazine(Buyable productToSubscribeM);
     
 
     public String toString() {

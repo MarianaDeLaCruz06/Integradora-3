@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public class Book extends BibliographicProducts{
+public class Book extends BibliographicProducts implements Buyable{
    
     private String reviewShort;
     private TypeBook gender;
@@ -16,6 +16,17 @@ public class Book extends BibliographicProducts{
         this.gender = gender;
         this.sellingValue = sellingValue;
         this. numCopies = numCopies;
+        
+        
+    }
+
+    public Book(Book bookToCopy){ 
+        super(bookToCopy.getId(), bookToCopy.getNameBP(), bookToCopy.getNumPages(), bookToCopy.getPublicateDate(), bookToCopy.getURL(), bookToCopy.getAcumReadPages());
+
+        this.reviewShort = bookToCopy.getReviewShort();
+        this.gender = bookToCopy.getGender();
+        this.sellingValue = bookToCopy.getSellingValue();
+        this. numCopies = bookToCopy.getNumCopies();
         
         
     }
@@ -50,6 +61,11 @@ public class Book extends BibliographicProducts{
 
     public void setNumCopies(int numCopies) {
         this.numCopies = numCopies;
+    }
+
+    @Override
+    public void buy() {
+        setNumCopies(getNumCopies()+1);
     }
 
 }

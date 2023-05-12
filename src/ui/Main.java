@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 import model.Controller;
@@ -139,15 +140,9 @@ public class Main{
         System.out.println("Enter de cc");
         String cc = reader.nextLine();
 
-        System.out.println("Enter the date");
-        System.out.println("Enter day");
-        int day = reader.nextInt();
-        System.out.println("Enter month");
-        int month = reader.nextInt();
-        System.out.println("Enter year");
-        int year = reader.nextInt();
+        Calendar date = Calendar.getInstance();
 
-        if(controller.createUser(userType, name, cc, day, month, year)){
+        if(controller.createUser(userType, name, cc, date)){
             System.out.println("The User has been registered");
         }else{
             System.out.println("The user can not be registered");
@@ -390,11 +385,18 @@ public class Main{
                 System.out.println("Error deleting magazine");
             }
         }
+    }
 
-           
-
+    public void buyProduct(){
+        //mostrar el usuario
+        //Pedir el usuario que compra
+        //Muestro los productos
+        //Pido el producto
+        //Verificar si es libro o un magazine
+        // Si es libro llamo al metodo comprar Libro y viceversa
         
     }
+
     
 
 }

@@ -5,17 +5,20 @@ import java.util.Calendar;
 public class UserRegular extends User{
 
     private BibliographicProducts[] listOfBiblioProducts = new BibliographicProducts[7];
+    private Bill[] listAllBills = new Bill[7];
 
     public UserRegular(String name, String cc, Calendar date) {
         super(name, cc, date);
     }
 
     @Override
-    public boolean buyBook(BibliographicProducts productToBuyB){
+    public boolean buyBook(Buyable productToBuyB){
         if (productToBuyB instanceof Book && verifyBookAmount()) {
             for (int i = 0; i < listOfBiblioProducts.length; i++) {
                 if(listOfBiblioProducts[i] == null){
-                    listOfBiblioProducts[i] = productToBuyB;
+                    Book boughtBook = new Book((Book) productToBuyB);
+                    listOfBiblioProducts[i] = boughtBook;
+                    (boughtBook).buy();
                     return true;
                 }
             }

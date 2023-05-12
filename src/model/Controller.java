@@ -8,16 +8,24 @@ public class Controller{
 
     private ArrayList<User> listAllUsers;
     private ArrayList<BibliographicProducts> listAllBibliographicProducts;
+    private ArrayList<Bill> listAllBill;
 
     public Controller(){
         listAllUsers = new ArrayList<>();
         listAllBibliographicProducts = new ArrayList<>();
     }
 
-    public boolean createUser(int userType, String name, String cc, int day, int month, int year){
-        
+    public void testCase(){
+        Calendar date = Calendar.getInstance();
+        User usertest = new UserRegular("Jose Ramirez", "1234567", date);
+        User usertest2 = new UserPremium("Ana Perez", "7654321", date);
 
-        Calendar date = new GregorianCalendar(year,month-1,day);
+        listAllUsers.add(usertest);
+        listAllUsers.add(usertest2);
+    }
+
+    public boolean createUser(int userType, String name, String cc, Calendar date){
+        
         switch(userType){
             case 1:
                 listAllUsers.add(new UserRegular(name, cc, date));
@@ -137,24 +145,27 @@ public class Controller{
     }
 
     public boolean buyBook(String ccUser, String idB){
-        User x = null;
-        Book y = null;
+        User userx = null;
+        Book booky = null;
         for (User user : listAllUsers) {
             if(user.getCc().equals(ccUser)){
-                x = user;
+                userx = user;
             }
         }
         for (BibliographicProducts book : listAllBibliographicProducts) {
             // Verificar si es un libro y si tiene el ID correspondiente
             if (book instanceof Book && book.getId().equals(idB)) {
-                y = (Book) book;
+                booky = (Book) book;
             }
         }
-        if(x==null || y == null){
+        if(userx==null || booky == null){
+            
             return false;
         }
         // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
-        return x.buyBook(y);
+        
+
+        return userx.buyBook(booky);
     }
 
     public boolean suscribeMagazine(String ccUser, String idB){
@@ -175,6 +186,32 @@ public class Controller{
             return false;
         }
         // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
+        return false; 
+    }
+
+    public boolean generateBill(int optionUserBill, String optionProductBill){
+       
+       String saveNameBook;
+
+
+       if(listAllBibliographicProducts.get(optionUserBill) instanceof Book){
+
+       }
+
+
+
+       
+        return false;
+    }
+
+    public boolean createObjects(){
+        for (int i = 0; i < 3; i++) {
+
+            BibliographicProducts BOOK = new Book(getUsers(), getProducts(), i, null, getBPMagazine(), i, getBPBook(), null, i, i);
+            listAllBibliographicProducts.add(BOOK);
+            
+        }
+
         return false;
     }
 

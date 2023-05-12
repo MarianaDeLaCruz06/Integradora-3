@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public class Magazine extends BibliographicProducts{
+public class Magazine extends BibliographicProducts implements Buyable{
 
     private TypeMagazine category;
     private double valueSuscription;
@@ -50,6 +50,13 @@ public class Magazine extends BibliographicProducts{
 
     public void setNumSuscription(int numSuscription) {
         this.numSuscription = numSuscription;
+    }
+
+
+    @Override
+    public void buy() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buy'");
     }
 
     

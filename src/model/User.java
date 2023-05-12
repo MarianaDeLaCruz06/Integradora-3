@@ -15,7 +15,7 @@ public abstract class User {
 
         this.name = name;
         this.cc = cc; 
-        this.date = date;
+        this.date = Calendar.getInstance();
 
         this.formatteDate = new SimpleDateFormat("dd/mm/yy");
     
@@ -53,9 +53,7 @@ public abstract class User {
         this.formatteDate = formatteDate;
     }
 
-    public boolean buyBook(BibliographicProducts productToBuyB){
-        return false;
-    }
+    public abstract boolean buyBook(Buyable productToBuyB);
 
     public boolean suscribeMagazine(BibliographicProducts productToSuscribeM){
         return false;

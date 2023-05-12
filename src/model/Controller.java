@@ -147,22 +147,30 @@ public class Controller{
     public boolean buyBook(String ccUser, String idBP){
         User userx = null;
         Book booky = null;
+
         for (User user : listAllUsers) {
             if(user.getCc().equals(ccUser)){
                 userx = user;
             }
         }
-        for (BibliographicProducts book : listAllBibliographicProducts) {
+
+        if(verifyBook(idBP)){
+            booky= (Book)getBibliographicProduct(idBP);
+
+        }
+        /*
+            for (BibliographicProducts book : listAllBibliographicProducts) {
             // Verificar si es un libro y si tiene el ID correspondiente
             if (book instanceof Book && book.getId().equals(idBP)) {
                 booky = (Book) book;
             }
         }
+         */
+
         if(userx==null || booky == null){
-            
             return false;
         }
-        // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
+        // Aqui falta verificar si el usuario es premium o estandar, si  es estandar verificar si puede comprar 
         
 
         return userx.buyBook(booky);
@@ -170,7 +178,7 @@ public class Controller{
 
     public boolean subscribeMagazine(String ccUser, String idBP){
         User userx = null;
-        Book magaziney = null;
+        Magazine magaziney = null;
         for (User user : listAllUsers) {
             if(user.getCc().equals(ccUser)){
                 userx = user;
@@ -265,7 +273,7 @@ public class Controller{
 
         for(int i=0; i>listAllUsers.size();i++){
 
-             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+            msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
 
         }
         
@@ -301,5 +309,31 @@ public class Controller{
 		Calendar date = new GregorianCalendar(year,month-1,day);
         return date;
 	}
+
+
+    public boolean verifyBook(String idBP){
+        boolean isABook = false;
+        BibliographicProducts product =getBibliographicProduct(idBP);
+        if(product!= null){
+            if(product instanceof Book){
+                isABook=true;
+            }
+        }
+        return isABook;
+    }
+
+    public BibliographicProducts getBibliographicProduct(String idBP){
+        BibliographicProducts product = null;
+        boolean found =false;
+        for(int i=0; i>listAllBibliographicProducts.size()&&!found;i++){
+            if(listAllBibliographicProducts.get(i).getId().equalsIgnoreCase(idBP)){
+
+                found =true;
+                product= listAllBibliographicProducts.get(i);
+            }
+        }
+        return product;
+    }
+
 }
 

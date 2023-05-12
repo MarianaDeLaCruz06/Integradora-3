@@ -34,11 +34,10 @@ public class Main{
             System.out.println("1. Register User (Regular and Premium)");
             System.out.println("2. Manage bibliographic products");
             System.out.println("3. ");
-            System.out.println("4. Here you can buy a book");
-            System.out.println("5. Here you can subscribe to a magazine");
-            System.out.println("6. Reading session");
-            System.out.println("7. Biblioteca de Productos Bibliográficos");
-            System.out.println("8. Exit");
+            System.out.println("4. Here you can buy a book or subscribe to a magazine");
+            System.out.println("5. Reading session");
+            System.out.println("6. Biblioteca de Productos Bibliográficos");
+            System.out.println("7. Exit");
 
             System.out.print("Select an option: ");
             int option=reader.nextInt();
@@ -91,7 +90,7 @@ public class Main{
                 break;
 
                 case 3:
-                   
+                   buyProduct();
                 break;
 
                 case 4:
@@ -106,7 +105,7 @@ public class Main{
                    
                 break;
 
-                case 8:
+                case 7:
                     System.out.println("Goodbye!");
                     cond=true;
                 break;
@@ -174,8 +173,12 @@ public class Main{
         String URL = reader.next();
         System.out.println("Enter the pages acum");
         int acumReadPages = reader.nextInt();
+
         System.out.println("Enter the review:");
         String reviewShort = reader.next();
+
+        reader.nextLine();
+
         System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
         int genderIndex = reader.nextInt();
         System.out.println("Enter the selling value:");
@@ -392,18 +395,35 @@ public class Main{
         System.out.println(view);
         System.out.println("Enter the ID number of the user you want");
         String ccUser = reader.nextLine();
+
         String view2 = controller.getProducts();
         System.out.println(view2);
+
         System.out.println("Enter the ID number of the book you want");
-        String idB = reader.nextLine();
+        String idPB = reader.nextLine();
+        
         //mostrar el usuario
         //Pedir el usuario que compra
         //Muestro los productos
         //Pido el producto
+        
+        if(controller.verifyBook(idPB)){
+
+            controller.buyBook(ccUser, idPB);
+            System.out.println("Buy the book");
+
+        }
+        else{
+            controller.subscribeMagazine(ccUser, idPB);
+            System.out.println("Buy the Magazine");
+        }
         //Verificar si es libro o un magazine
         // Si es libro llamo al metodo comprar Libro y viceversa
 
     }
+
+
+
 
     
 

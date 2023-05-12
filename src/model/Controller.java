@@ -144,7 +144,7 @@ public class Controller{
         return false;
     }
 
-    public boolean buyBook(String ccUser, String idB){
+    public boolean buyBook(String ccUser, String idBP){
         User userx = null;
         Book booky = null;
         for (User user : listAllUsers) {
@@ -154,7 +154,7 @@ public class Controller{
         }
         for (BibliographicProducts book : listAllBibliographicProducts) {
             // Verificar si es un libro y si tiene el ID correspondiente
-            if (book instanceof Book && book.getId().equals(idB)) {
+            if (book instanceof Book && book.getId().equals(idBP)) {
                 booky = (Book) book;
             }
         }
@@ -168,21 +168,21 @@ public class Controller{
         return userx.buyBook(booky);
     }
 
-    public boolean suscribeMagazine(String ccUser, String idB){
-        User x = null;
-        Book y = null;
+    public boolean suscribeMagazine(String ccUser, String idBP){
+        User userx = null;
+        Book magaziney = null;
         for (User user : listAllUsers) {
             if(user.getCc().equals(ccUser)){
-                x = user;
+                userx = user;
             }
         }
-        for (BibliographicProducts book : listAllBibliographicProducts) {
+        for (BibliographicProducts magazine : listAllBibliographicProducts) {
             // Verificar si es un libro y si tiene el ID correspondiente
-            if (book instanceof Book && book.getId().equals(idB)) {
-                y = (Book) book;
+            if (magazine instanceof Magazine && magazine.getId().equals(idBP)) {
+                magaziney = (Magazine) magazine;
             }
         }
-        if(x==null || y == null){
+        if(userx==null || magaziney == null){
             return false;
         }
         // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
@@ -236,7 +236,7 @@ public class Controller{
 
             if(listAllBibliographicProducts.get(i) instanceof Book){
 
-             msg = "\n" + listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg = "\n" + (i+1) +". "+  listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }
@@ -252,7 +252,7 @@ public class Controller{
 
             if(listAllBibliographicProducts.get(i) instanceof Magazine){
 
-             msg = "\n" + listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg = "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }

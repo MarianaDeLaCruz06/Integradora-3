@@ -55,9 +55,8 @@ public abstract class User {
 
     public abstract boolean buyBook(Buyable productToBuyB);
 
-    public boolean suscribeMagazine(BibliographicProducts productToSuscribeM){
-        return false;
-    }
+    public abstract boolean suscribeMagazine(BibliographicProducts productToSuscribeM);
+    
 
     public String toString() {
         String msg = "";

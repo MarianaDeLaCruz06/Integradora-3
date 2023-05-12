@@ -237,7 +237,7 @@ public class Main{
     }
 
     public void modifyBook(){
-        String view = controller.getProducts();
+        String view = controller.getBPBook();
 
         if(view.equals("")){
             System.out.println("There are no bibliographic products");
@@ -289,7 +289,7 @@ public class Main{
     }
 
     public void modifyMagazine(){
-        String view = controller.getProducts();
+        String view = controller.getBPMagazine();
 
         if(view.equals("")){
             System.out.println("There are no bibliographic products");
@@ -344,7 +344,7 @@ public class Main{
 
         reader.nextLine();
 
-        String view = controller.getProducts();
+        String view = controller.getBPBook();
 
         if(view.equals("")){
             System.out.println("There are no bibliographic products");
@@ -369,7 +369,7 @@ public class Main{
 
         reader.nextLine();
 
-        String view = controller.getProducts();
+        String view = controller.getBPMagazine();
 
         if(view.equals("")){
             System.out.println("There are no bibliographic products");
@@ -388,13 +388,21 @@ public class Main{
     }
 
     public void buyProduct(){
+        String view = controller.getUsers();
+        System.out.println(view);
+        System.out.println("Enter the ID number of the user you want");
+        String ccUser = reader.nextLine();
+        String view2 = controller.getProducts();
+        System.out.println(view2);
+        System.out.println("Enter the ID number of the book you want");
+        String idB = reader.nextLine();
         //mostrar el usuario
         //Pedir el usuario que compra
         //Muestro los productos
         //Pido el producto
         //Verificar si es libro o un magazine
         // Si es libro llamo al metodo comprar Libro y viceversa
-        
+
     }
 
     

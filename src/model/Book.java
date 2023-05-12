@@ -27,8 +27,7 @@ public class Book extends BibliographicProducts implements Buyable{
         this.gender = bookToCopy.getGender();
         this.sellingValue = bookToCopy.getSellingValue();
         this. numCopies = bookToCopy.getNumCopies();
-        
-        
+    
     }
     
     public String getReviewShort() {

@@ -22,4 +22,13 @@ public class UserPremium extends User{
         return false;
     }
     
+    @Override
+    public boolean suscribeMagazine(Buyable productToSuscribeM) {
+        if (productToSuscribeM instanceof Magazine){
+            Magazine boughtMagazine = new Magazine((Magazine) productToSuscribeM);
+            boughtMagazine.buy();
+            return listAllBibliographicProducts.add(boughtMagazine);
+        } 
+        return false;
+    }
 }

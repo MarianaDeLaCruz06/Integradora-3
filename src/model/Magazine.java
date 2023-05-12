@@ -19,6 +19,16 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.numSuscription = numSuscription;
     }
 
+    public Magazine(Magazine magazineToCopy){ 
+        super(magazineToCopy.getId(), magazineToCopy.getNameBP(), magazineToCopy.getNumPages(), magazineToCopy.getPublicateDate(), magazineToCopy.getURL(), magazineToCopy.getAcumReadPages());
+
+        this.category = magazineToCopy.getCategory();
+        this.valueSuscription = magazineToCopy.getValueSuscription();
+        this.emissionPeriod = magazineToCopy.getEmissionPeriod();
+        this. numSuscription = magazineToCopy.getNumSuscription();
+        
+    }
+
 
     public TypeMagazine getCategory() {
         return category;
@@ -55,9 +65,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
 
     @Override
     public void buy() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buy'");
+        setNumSuscription(getNumSuscription()+1);
     }
-
     
 }

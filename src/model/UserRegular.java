@@ -27,11 +27,13 @@ public class UserRegular extends User{
     }
 
     @Override
-    public boolean suscribeMagazine(BibliographicProducts productToSuscribeM){
-        if (productToSuscribeM instanceof Magazine && verifyMagazineAmount()){
+    public boolean subscribeMagazine(Buyable productToSubscribeM){
+        if (productToSubscribeM instanceof Magazine && verifyMagazineAmount()){
             for (int i = 0; i < listOfBiblioProducts.length; i++) {
                 if(listOfBiblioProducts[i] == null){
-                    listOfBiblioProducts[i] = productToSuscribeM;
+                    Magazine boughtMagazine = new Magazine((Magazine) productToSubscribeM);
+                    listOfBiblioProducts[i] = boughtMagazine;
+                    (boughtMagazine).buy();
                     return true;
                 }
             }

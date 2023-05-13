@@ -7,25 +7,25 @@ public class Magazine extends BibliographicProducts implements Buyable{
     private TypeMagazine category;
     private double valueSuscription;
     private String emissionPeriod;
-    private int numSuscription;
+    private int numSubscription;
 
 
-    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSuscription, String emissionPeriod, int numSuscription) {
+    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSuscription) {
         super(id, nameBP, numPages, publicateDate, URL, acumReadPages);
 
         this.category = category;
         this.valueSuscription = valueSuscription;
         this.emissionPeriod = emissionPeriod;
-        this.numSuscription = numSuscription;
+        this.numSubscription = numSuscription;
     }
 
     public Magazine(Magazine magazineToCopy){ 
         super(magazineToCopy.getId(), magazineToCopy.getNameBP(), magazineToCopy.getNumPages(), magazineToCopy.getPublicateDate(), magazineToCopy.getURL(), magazineToCopy.getAcumReadPages());
 
         this.category = magazineToCopy.getCategory();
-        this.valueSuscription = magazineToCopy.getValueSuscription();
+        this.valueSuscription = magazineToCopy.getValueSubscription();
         this.emissionPeriod = magazineToCopy.getEmissionPeriod();
-        this. numSuscription = magazineToCopy.getNumSuscription();
+        this. numSubscription = magazineToCopy.getNumSuscription();
         
     }
 
@@ -38,12 +38,12 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.category = category;
     }
 
-    public double getValueSuscription() {
+    public double getValueSubscription() {
         return valueSuscription;
     }
 
-    public void setValueSuscription(double valueSuscription) {
-        this.valueSuscription = valueSuscription;
+    public void setValueSubscription(double valueSubscription) {
+        this.valueSubscription = valueSubscription;
     }
 
     public String getEmissionPeriod() {

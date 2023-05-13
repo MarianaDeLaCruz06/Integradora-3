@@ -48,11 +48,11 @@ public class Controller{
         
     }
 
-    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSuscription, String emissionPeriod, int numSuscription){
+    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSubscription, String emissionPeriod, int numSuscription){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndex-1];
 
-        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSuscription, emissionPeriod, numSuscription);
+        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSubscription, emissionPeriod, numSuscription);
 
         return listAllBibliographicProducts.add(newMagazine);
 
@@ -87,7 +87,7 @@ public class Controller{
         return true; 
     }
 
-    public boolean modifyMagazine(int optionMModify, String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSuscriptionModify, String emissionPeriodModify, int numSuscriptionModify){
+    public boolean modifyMagazine(int optionMModify, String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSubscriptionModify, String emissionPeriodModify, int numSuscriptionModify){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndexModify-1];
 
@@ -104,7 +104,7 @@ public class Controller{
                     magazine.setURL(URLModify);
                     magazine.setAcumReadPages(acumReadPagesModify);
                     ((Magazine) magazine).setCategory(category);
-                    ((Magazine) magazine).setValueSuscription(valueSuscriptionModify);
+                    ((Magazine) magazine).setValueSubscription(valueSubscriptionModify);
                     ((Magazine) magazine).setEmissionPeriod(emissionPeriodModify);
                     ((Magazine) magazine).setNumSuscription(numSuscriptionModify);
                     magazine.setPublicateDate(postDateMModify);
@@ -171,7 +171,6 @@ public class Controller{
             return false;
         }
         // Aqui falta verificar si el usuario es premium o estandar, si  es estandar verificar si puede comprar 
-        
 
         return userx.buyBook(booky);
     }
@@ -206,9 +205,6 @@ public class Controller{
 
        }
 
-
-
-       
         return false;
     }
 
@@ -226,9 +222,9 @@ public class Controller{
     public String getProducts(){
         String msg = "";
 
-        for(int i=0; i>listAllBibliographicProducts.size();i++){
+        for(int i=0; i<listAllBibliographicProducts.size();i++){
 
-             msg = "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
 
         }
         
@@ -240,11 +236,11 @@ public class Controller{
 
         String msg = "";
 
-        for(int i=0; i>listAllBibliographicProducts.size();i++){
+        for(int i=0; i<listAllBibliographicProducts.size();i++){
 
             if(listAllBibliographicProducts.get(i) instanceof Book){
 
-             msg = "\n" + (i+1) +". "+  listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+  listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }
@@ -256,11 +252,11 @@ public class Controller{
 
         String msg = "";
 
-        for(int i=0; i>listAllBibliographicProducts.size();i++){
+        for(int i=0; i<listAllBibliographicProducts.size();i++){
 
             if(listAllBibliographicProducts.get(i) instanceof Magazine){
 
-             msg = "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }
@@ -271,9 +267,9 @@ public class Controller{
     public String getUsers(){
         String msg = "";
 
-        for(int i=0; i>listAllUsers.size();i++){
+        for(int i=0; i<listAllUsers.size();i++){
 
-            msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+            msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
 
         }
         
@@ -283,9 +279,9 @@ public class Controller{
     public String getUsersRegular(){
         String msg = "";
 
-        for(int i=0; i>listAllUsers.size();i++){
+        for(int i=0; i<listAllUsers.size();i++){
             if(listAllUsers.get(i) instanceof UserRegular){
-             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
             }
         }
         
@@ -295,9 +291,9 @@ public class Controller{
     public String getUsersPremium(){
         String msg = "";
 
-        for(int i=0; i>listAllUsers.size();i++){
+        for(int i=0; i<listAllUsers.size();i++){
             if(listAllUsers.get(i) instanceof UserPremium){
-             msg = "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
             }
         }
         
@@ -325,7 +321,7 @@ public class Controller{
     public BibliographicProducts getBibliographicProduct(String idBP){
         BibliographicProducts product = null;
         boolean found =false;
-        for(int i=0; i>listAllBibliographicProducts.size()&&!found;i++){
+        for(int i=0; i<listAllBibliographicProducts.size()&&!found;i++){
             if(listAllBibliographicProducts.get(i).getId().equalsIgnoreCase(idBP)){
 
                 found =true;

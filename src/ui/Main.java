@@ -352,8 +352,13 @@ public class Main{
         if(view.equals("")){
             System.out.println("There are no bibliographic products");
         } else{
+            
             System.out.println(view);
-           
+
+            System.out.println("* * * * * * * * * *");
+            System.out.println("*  Delete a Book  *");
+            System.out.println("* * * * * * * * * *");
+
             System.out.println("Enter the ID of the book to delete:");
             String idB = reader.nextLine();
             boolean deleted = controller.deleteBook(idB);
@@ -379,6 +384,10 @@ public class Main{
         } else{
             System.out.println(view);
 
+            System.out.println("* * * * * * * * * * * *");
+            System.out.println("*  Delete a magazine  *");
+            System.out.println("* * * * * * * * * * * *");
+
             System.out.println("Enter the ID of the magazine to delete:");
             String idM = reader.nextLine();
             boolean deleted = controller.deleteMagazine(idM);
@@ -393,6 +402,11 @@ public class Main{
     public void buyProduct(){
         String view = controller.getUsers();
         System.out.println(view);
+
+        System.out.println("* * * * * * * * * * * * * * * * * * * * *");
+        System.out.println("*  - Buy a book or subscribe a magazine *");
+        System.out.println("* * * * * * * * * * * * * * * * * * * * *");
+
         System.out.println("Enter the ID number of the user you want");
         String ccUser = reader.nextLine();
 
@@ -415,7 +429,7 @@ public class Main{
         }
         else{
             controller.subscribeMagazine(ccUser, idPB);
-            System.out.println("Buy the Magazine");
+            System.out.println("Subscribe the Magazine");
         }
         //Verificar si es libro o un magazine
         // Si es libro llamo al metodo comprar Libro y viceversa

@@ -13,7 +13,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
 <<<<<<< HEAD
     public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSubscription) {
 =======
-    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSuscription) {
+    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSubscription) {
 >>>>>>> origin
         super(id, nameBP, numPages, publicateDate, URL, acumReadPages);
 
@@ -32,7 +32,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
 <<<<<<< HEAD
         this. numSubscription = magazineToCopy.getNumSubscription();
 =======
-        this. numSubscription = magazineToCopy.getNumSuscription();
+        this. numSubscription = magazineToCopy.getNumSubscription();
 >>>>>>> origin
         
     }

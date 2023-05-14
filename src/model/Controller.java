@@ -87,7 +87,7 @@ public class Controller{
         return true; 
     }
 
-    public boolean modifyMagazine(int optionMModify, String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSubscriptionModify, String emissionPeriodModify, int numSuscriptionModify){
+    public boolean modifyMagazine(int optionMModify, String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSubscriptionModify, String emissionPeriodModify, int numSubscriptionModify){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndexModify-1];
 

@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class Magazine extends BibliographicProducts implements Buyable{
 
     private TypeMagazine category;
-    private double valueSuscription;
+    private double valueSubscription;
     private String emissionPeriod;
     private int numSubscription;
 
@@ -15,18 +15,17 @@ public class Magazine extends BibliographicProducts implements Buyable{
         super(id, nameBP, numPages, publicateDate, URL, acumReadPages);
 
         this.category = category;
-        this.valueSuscription = valueSuscription;
+        this.valueSubscription = valueSubscription;
         this.emissionPeriod = emissionPeriod;
-        this.numSubscription = numSuscription;
+        this.numSubscription = numSubscription;
     }
 
     public Magazine(Magazine magazineToCopy){ 
         super(magazineToCopy.getId(), magazineToCopy.getNameBP(), magazineToCopy.getNumPages(), magazineToCopy.getPublicateDate(), magazineToCopy.getURL(), magazineToCopy.getAcumReadPages());
 
         this.category = magazineToCopy.getCategory();
-        this.valueSuscription = magazineToCopy.getValueSubscription();
+        this.valueSubscription = magazineToCopy.getValueSubscription();
         this.emissionPeriod = magazineToCopy.getEmissionPeriod();
-
 
         this. numSubscription = magazineToCopy.getNumSubscription();
         
@@ -42,7 +41,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
     }
 
     public double getValueSubscription() {
-        return valueSuscription;
+        return valueSubscription;
     }
 
     public void setValueSubscription(double valueSubscription) {
@@ -58,10 +57,10 @@ public class Magazine extends BibliographicProducts implements Buyable{
     }
 
     public int getNumSubscription() {
-        return numSuscription;
+        return numSubscription;
     }
 
-    public void setNumSuscription(int numSubscription) {
+    public void setNumSubscription(int numSubscription) {
         this.numSubscription = numSubscription;
     }
 

@@ -233,10 +233,10 @@ public class Main{
         System.out.println("Enter the emission period:");
         String emissionPeriod = reader.nextLine();
         System.out.println("Enter the number of subscriptions:");
-        int numSuscription = reader.nextInt();
+        int numSubscription = reader.nextInt();
 
         // Registrar la nueva revista en la biblioteca
-        boolean magazineRegistered = controller.registerMagazine(idM, namePB, numPagesM, dayM, monthM, yearM, URLm, acumReadPagesM, categoryIndex, valueSubscription, emissionPeriod, numSuscription);
+        boolean magazineRegistered = controller.registerMagazine(idM, namePB, numPagesM, dayM, monthM, yearM, URLm, acumReadPagesM, categoryIndex, valueSubscription, emissionPeriod, numSubscription);
 
         // Comprobar si la revista fue registrada exitosamente
         if (magazineRegistered) {
@@ -333,14 +333,14 @@ public class Main{
             System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
             int categoryIndexModify = reader.nextInt();
             System.out.println("Enter the value of subscription:");
-            double valueSuscriptionModify = reader.nextDouble();
+            double valueSubscriptionModify = reader.nextDouble();
             System.out.println("Enter the emission period:");
             String emissionPeriodModify = reader.nextLine();
             System.out.println("Enter the number of subscriptions:");
             int numSubscriptionModify = reader.nextInt();
     
             // Registrar la nueva revista en la biblioteca
-            boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesMModify, dayMModify, monthMModify, yearMModify, URLMModify, acumReadPagesMModify, categoryIndexModify, valueSubscriptionModify, emissionPeriodModify, numSuscriptionModify);
+            boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesMModify, dayMModify, monthMModify, yearMModify, URLMModify, acumReadPagesMModify, categoryIndexModify, valueSubscriptionModify, emissionPeriodModify, numSubscriptionModify);
     
             // Comprobar si la revista fue registrada exitosamente
             if (magazineModify) {

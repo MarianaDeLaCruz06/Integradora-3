@@ -103,7 +103,7 @@ public class Main{
                 break;
 
                 case 5:
-                   simulateReadingSession();
+                    simulateReadingSession();
                 break;
 
                 case 6:
@@ -462,7 +462,7 @@ public class Main{
         System.out.println("Simulación de sesión de lectura");
         System.out.println("-----------------------------");
         
-        
+
         // Obtener el producto bibliográfico y la página actual de alguna manera
         String productName = "Caperucita Roja";
         int currentPage = 1;
@@ -470,36 +470,36 @@ public class Main{
         boolean reading = true;
 
         while (reading) {
-            System.out.println("Producto: " + productName);
-            System.out.println("Página actual: " + currentPage);
-            System.out.println("Opciones de navegación:");
-            System.out.println("1. Leer página anterior");
-            System.out.println("2. Leer página siguiente");
-            System.out.println("3. Volver a la Biblioteca");
+            System.out.println("Product: " + productName);
+            System.out.println("Current page: " + currentPage);
+            System.out.println("Navigation options:");
+            System.out.println("1. Read previous page");
+            System.out.println("2. Read next page");
+            System.out.println("3. Return to the Library");
             
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Select an option: ");
             int option = reader.nextInt();
             
             switch (option) {
                 case 1:
                     if (currentPage > 1) {
                         currentPage--;
-                        System.out.println("Ha pasado a la página anterior.");
+                        System.out.println("You have moved to the previous page.");
                     } else {
-                        System.out.println("Ya está en la primera página.");
+                        System.out.println("It is already on the first page.");
                     }
                     break;
                 case 2:
                     // Aquí podrías implementar la lógica para verificar si la página siguiente existe
                     currentPage++;
-                    System.out.println("Ha pasado a la página siguiente.");
+                    System.out.println("You have moved on to the next page.");
                     break;
                 case 3:
-                    System.out.println("Volviendo a la Biblioteca...");
+                    System.out.println("Back to the Library...");
                     reading = false;
                     break;
                 default:
-                    System.out.println("Opción inválida. Inténtelo de nuevo.");
+                    System.out.println("Invalid option. Please try again.");
                     break;
             }
             

@@ -106,7 +106,7 @@ public class Controller{
                     ((Magazine) magazine).setCategory(category);
                     ((Magazine) magazine).setValueSubscription(valueSubscriptionModify);
                     ((Magazine) magazine).setEmissionPeriod(emissionPeriodModify);
-                    ((Magazine) magazine).setNumSubscription(numSuscriptionModify);
+                    ((Magazine) magazine).setNumSubscription(numSubscriptionModify);
                     magazine.setPublicateDate(postDateMModify);
                     
                 }

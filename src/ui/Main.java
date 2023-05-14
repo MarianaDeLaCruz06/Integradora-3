@@ -103,7 +103,7 @@ public class Main{
                 break;
 
                 case 5:
-                   
+                   simulateReadingSession();
                 break;
 
                 case 6:
@@ -458,7 +458,54 @@ public class Main{
 
     }
 
+    public void simulateReadingSession() {
+        System.out.println("Simulación de sesión de lectura");
+        System.out.println("-----------------------------");
+        
+        
+        // Obtener el producto bibliográfico y la página actual de alguna manera
+        String productName = "Caperucita Roja";
+        int currentPage = 1;
+        
+        boolean reading = true;
 
+        while (reading) {
+            System.out.println("Producto: " + productName);
+            System.out.println("Página actual: " + currentPage);
+            System.out.println("Opciones de navegación:");
+            System.out.println("1. Leer página anterior");
+            System.out.println("2. Leer página siguiente");
+            System.out.println("3. Volver a la Biblioteca");
+            
+            System.out.print("Seleccione una opción: ");
+            int option = reader.nextInt();
+            
+            switch (option) {
+                case 1:
+                    if (currentPage > 1) {
+                        currentPage--;
+                        System.out.println("Ha pasado a la página anterior.");
+                    } else {
+                        System.out.println("Ya está en la primera página.");
+                    }
+                    break;
+                case 2:
+                    // Aquí podrías implementar la lógica para verificar si la página siguiente existe
+                    currentPage++;
+                    System.out.println("Ha pasado a la página siguiente.");
+                    break;
+                case 3:
+                    System.out.println("Volviendo a la Biblioteca...");
+                    reading = false;
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo.");
+                    break;
+            }
+            
+            System.out.println();
+        }
+    }
 
 
     

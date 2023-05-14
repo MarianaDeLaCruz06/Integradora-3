@@ -10,7 +10,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
     private int numSubscription;
 
 
-    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSuscription) {
+    public Magazine(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages, TypeMagazine category, double valueSubscription, String emissionPeriod, int numSubscription) {
         super(id, nameBP, numPages, publicateDate, URL, acumReadPages);
 
         this.category = category;
@@ -25,7 +25,7 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.category = magazineToCopy.getCategory();
         this.valueSuscription = magazineToCopy.getValueSubscription();
         this.emissionPeriod = magazineToCopy.getEmissionPeriod();
-        this. numSubscription = magazineToCopy.getNumSuscription();
+        this. numSubscription = magazineToCopy.getNumSubscription();
         
     }
 
@@ -54,18 +54,18 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.emissionPeriod = emissionPeriod;
     }
 
-    public int getNumSuscription() {
+    public int getNumSubscription() {
         return numSuscription;
     }
 
-    public void setNumSuscription(int numSuscription) {
-        this.numSuscription = numSuscription;
+    public void setNumSuscription(int numSubscription) {
+        this.numSubscription = numSubscription;
     }
 
 
     @Override
     public void buy() {
-        setNumSuscription(getNumSuscription()+1);
+        setNumSubscription(getNumSubscription()+1);
     }
     
 }

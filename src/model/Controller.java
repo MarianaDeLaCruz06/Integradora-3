@@ -48,11 +48,11 @@ public class Controller{
         
     }
 
-    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSubscription, String emissionPeriod, int numSuscription){
+    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSubscription, String emissionPeriod, int numSubscription){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndex-1];
 
-        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSubscription, emissionPeriod, numSuscription);
+        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSubscription, emissionPeriod, numSubscription);
 
         return listAllBibliographicProducts.add(newMagazine);
 
@@ -106,7 +106,7 @@ public class Controller{
                     ((Magazine) magazine).setCategory(category);
                     ((Magazine) magazine).setValueSubscription(valueSubscriptionModify);
                     ((Magazine) magazine).setEmissionPeriod(emissionPeriodModify);
-                    ((Magazine) magazine).setNumSuscription(numSuscriptionModify);
+                    ((Magazine) magazine).setNumSubscription(numSuscriptionModify);
                     magazine.setPublicateDate(postDateMModify);
                     
                 }

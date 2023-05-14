@@ -33,14 +33,15 @@ public class Main{
         while(!cond){
             System.out.println("1. Register User (Regular and Premium)");
             System.out.println("2. Manage bibliographic products");
-            System.out.println("3. ");
+            System.out.println("3. Objects in the system for each type of user and bibliographic product");
             System.out.println("4. Here you can buy a book or subscribe to a magazine");
             System.out.println("5. Reading session");
-            System.out.println("6. Biblioteca de Productos Bibliográficos");
-            System.out.println("7. Exit");
+            System.out.println("6. User Bibliographic Products Library");
+            System.out.println("7. Generate reports");
+            System.out.println("8. Exit");
 
             System.out.print("Select an option: ");
-            int option=reader.nextInt();
+            int option = reader.nextInt();
             switch (option) {
                 case 1:
                     registerUser();
@@ -90,11 +91,11 @@ public class Main{
                 break;
 
                 case 3:
-                   buyProduct();
+                   
                 break;
-
-                case 4:
                     
+                case 4:
+                    buyProduct();
                 break;
 
                 case 5:
@@ -106,6 +107,10 @@ public class Main{
                 break;
 
                 case 7:
+                   
+                break;
+
+                case 8:
                     System.out.println("Goodbye!");
                     cond=true;
                 break;
@@ -162,7 +167,7 @@ public class Main{
         System.out.println("Enter the book name:");
         String nameBP = reader.nextLine();
         System.out.println("Enter the number of pages:");
-        int numPages = reader.nextInt();
+        int numPagesB = reader.nextInt();
         System.out.println("Enter the publication day:");
         int dayB = reader.nextInt();
         System.out.println("Enter the publication month:");
@@ -170,9 +175,9 @@ public class Main{
         System.out.println("Enter the publication year:");
         int yearB = reader.nextInt();
         System.out.println("Enter the URL:");
-        String URL = reader.next();
+        String URLb = reader.next();
         System.out.println("Enter the pages acum");
-        int acumReadPages = reader.nextInt();
+        int acumReadPagesB = reader.nextInt();
 
         System.out.println("Enter the review:");
         String reviewShort = reader.next();
@@ -187,7 +192,7 @@ public class Main{
         int numCopies = reader.nextInt();
 
         
-        if (controller.registerBook(idB, nameBP, numPages, dayB, monthB, yearB, URL, acumReadPages, reviewShort, genderIndex, sellingValue, numCopies)) {
+        if (controller.registerBook(idB, nameBP, numPagesB, dayB, monthB, yearB, URLb, acumReadPagesB, reviewShort, genderIndex, sellingValue, numCopies)) {
             System.out.println("Book registered successfully!");
         } else {
             System.out.println("The book could not be registered");
@@ -207,7 +212,7 @@ public class Main{
         System.out.println("Enter the name:");
         String namePB= reader.nextLine();
         System.out.println("Enter the number of pages:");
-        int numPages = reader.nextInt();
+        int numPagesM = reader.nextInt();
         System.out.println("Enter the publication day:");
         int dayM = reader.nextInt();
         System.out.println("Enter the publication month:");
@@ -215,20 +220,23 @@ public class Main{
         System.out.println("Enter the publication year:");
         int yearM = reader.nextInt();
         System.out.println("Enter the URL:");
-        String URL = reader.nextLine();
+        String URLm = reader.nextLine();
         System.out.println("Enter the accumulated read pages:");
-        int acumReadPages = reader.nextInt();
+        int acumReadPagesM = reader.nextInt();
+
+        reader.nextLine();
+
         System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
         int categoryIndex = reader.nextInt();
         System.out.println("Enter the value of subscription:");
-        double valueSuscription = reader.nextDouble();
+        double valueSubscription = reader.nextDouble();
         System.out.println("Enter the emission period:");
         String emissionPeriod = reader.nextLine();
         System.out.println("Enter the number of subscriptions:");
         int numSuscription = reader.nextInt();
 
         // Registrar la nueva revista en la biblioteca
-        boolean magazineRegistered = controller.registerMagazine(idM, namePB, numPages, dayM, monthM, yearM, URL, acumReadPages, categoryIndex, valueSuscription, emissionPeriod, numSuscription);
+        boolean magazineRegistered = controller.registerMagazine(idM, namePB, numPagesM, dayM, monthM, yearM, URLm, acumReadPagesM, categoryIndex, valueSubscription, emissionPeriod, numSuscription);
 
         // Comprobar si la revista fue registrada exitosamente
         if (magazineRegistered) {
@@ -261,7 +269,7 @@ public class Main{
             System.out.println("Enter the book name:");
             String nameBPModify = reader.nextLine();
             System.out.println("Enter the number of pages:");
-            int numPagesModify = reader.nextInt();
+            int numPagesBModify = reader.nextInt();
             System.out.println("Enter the publication day:");
             int dayBModify = reader.nextInt();
             System.out.println("Enter the publication month:");
@@ -269,9 +277,9 @@ public class Main{
             System.out.println("Enter the publication year:");
             int yearBModify = reader.nextInt();
             System.out.println("Enter the URL:");
-            String URLModify = reader.next();
+            String URLBModify = reader.next();
             System.out.println("Enter the URL:");
-            int acumReadPagesModify = reader.nextInt();
+            int acumReadPagesBModify = reader.nextInt();
             System.out.println("Enter the review:");
             String reviewShortModify = reader.next();
             System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
@@ -282,7 +290,7 @@ public class Main{
             int numCopiesModify = reader.nextInt();
     
             
-            if (controller.modifyBook(optionModify, idBModify, nameBPModify, numPagesModify, dayBModify, monthBModify, yearBModify, URLModify, acumReadPagesModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
+            if (controller.modifyBook(optionModify, idBModify, nameBPModify, numPagesBModify, dayBModify, monthBModify, yearBModify, URLBModify, acumReadPagesBModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
                 System.out.println("Book modify successfully!");
             } else {
                 System.out.println("The book could not be modify");
@@ -311,7 +319,7 @@ public class Main{
             System.out.println("Enter the name:");
             String namePBModify = reader.nextLine();
             System.out.println("Enter the number of pages:");
-            int numPagesModify = reader.nextInt();
+            int numPagesMModify = reader.nextInt();
             System.out.println("Enter the publication day:");
             int dayMModify = reader.nextInt();
             System.out.println("Enter the publication month:");
@@ -319,9 +327,9 @@ public class Main{
             System.out.println("Enter the publication year:");
             int yearMModify = reader.nextInt();
             System.out.println("Enter the URL:");
-            String URLModify = reader.nextLine();
+            String URLMModify = reader.nextLine();
             System.out.println("Enter the accumulated read pages:");
-            int acumReadPagesModify = reader.nextInt();
+            int acumReadPagesMModify = reader.nextInt();
             System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
             int categoryIndexModify = reader.nextInt();
             System.out.println("Enter the value of subscription:");
@@ -329,10 +337,10 @@ public class Main{
             System.out.println("Enter the emission period:");
             String emissionPeriodModify = reader.nextLine();
             System.out.println("Enter the number of subscriptions:");
-            int numSuscriptionModify = reader.nextInt();
+            int numSubscriptionModify = reader.nextInt();
     
             // Registrar la nueva revista en la biblioteca
-            boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesModify, dayMModify, monthMModify, yearMModify, URLModify, acumReadPagesModify, categoryIndexModify, valueSuscriptionModify, emissionPeriodModify, numSuscriptionModify);
+            boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesMModify, dayMModify, monthMModify, yearMModify, URLMModify, acumReadPagesMModify, categoryIndexModify, valueSubscriptionModify, emissionPeriodModify, numSuscriptionModify);
     
             // Comprobar si la revista fue registrada exitosamente
             if (magazineModify) {

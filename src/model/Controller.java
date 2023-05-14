@@ -48,11 +48,11 @@ public class Controller{
         
     }
 
-    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSubscription, String emissionPeriod, int numSubscription){
+    public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSuscription, String emissionPeriod, int numSuscription){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndex-1];
 
-        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSubscription, emissionPeriod, numSubscription);
+        Magazine newMagazine = new Magazine(id, nameBP, numPages, new GregorianCalendar(yearM, monthM, dayM), URL, acumReadPages, category, valueSuscription, emissionPeriod, numSuscription);
 
         return listAllBibliographicProducts.add(newMagazine);
 
@@ -204,6 +204,7 @@ public class Controller{
        if(listAllBibliographicProducts.get(optionUserBill) instanceof Book){
 
        }
+
 
         return false;
     }

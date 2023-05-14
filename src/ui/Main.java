@@ -91,7 +91,11 @@ public class Main{
                 break;
 
                 case 3:
-                   
+    
+                    System.out.println(controller.getUsers());
+                    System.out.println(controller.getProducts());
+                    System.out.println();
+
                 break;
                     
                 case 4:
@@ -145,6 +149,7 @@ public class Main{
         String cc = reader.nextLine();
 
         Calendar date = Calendar.getInstance();
+        System.out.println(date);
 
         if(controller.createUser(userType, name, cc, date)){
             System.out.println("The User has been registered");
@@ -161,6 +166,8 @@ public class Main{
         System.out.println("* * * * * * * * * * * * *");
         System.out.println("*  Register a New Book  *");
         System.out.println("* * * * * * * * * * * * *");
+
+        reader.nextLine();
 
         System.out.println("Enter the book ID:");
         String idB = reader.nextLine();
@@ -206,6 +213,8 @@ public class Main{
         System.out.println("* * * * * * * * * * * * * * *");
         System.out.println("*  Register a new magazine  *");
         System.out.println("* * * * * * * * * * * * * * *");
+
+        reader.nextLine();
 
         System.out.println("Enter the ID:");
         String idM = reader.nextLine();
@@ -261,9 +270,12 @@ public class Main{
             System.out.println("* * * * * * * * * * * *");
             System.out.println("*  Modify a New Book  *");
             System.out.println("* * * * * * * * * * * *");
-            
+           
             System.out.println("Select the book you werw saying to modify");
             int optionModify = reader.nextInt();
+
+            reader.nextLine();
+
             System.out.println("Enter the book ID:");
             String idBModify = reader.nextLine();
             System.out.println("Enter the book name:");
@@ -311,9 +323,11 @@ public class Main{
             System.out.println("* * * * * * * * * * * * * *");
             System.out.println("*  Modify a new magazine  *");
             System.out.println("* * * * * * * * * * * * * *");
-            
+
             System.out.println("Select the magazine you werw saying to modify");
             int optionMModify = reader.nextInt();
+
+            reader.nextLine();
             System.out.println("Enter the ID:");
             String idMModify = reader.nextLine();
             System.out.println("Enter the name:");
@@ -366,7 +380,7 @@ public class Main{
             System.out.println("* * * * * * * * * *");
             System.out.println("*  Delete a Book  *");
             System.out.println("* * * * * * * * * *");
-
+            reader.nextLine();
             System.out.println("Enter the ID of the book to delete:");
             String idB = reader.nextLine();
             boolean deleted = controller.deleteBook(idB);
@@ -395,7 +409,7 @@ public class Main{
             System.out.println("* * * * * * * * * * * *");
             System.out.println("*  Delete a magazine  *");
             System.out.println("* * * * * * * * * * * *");
-
+            reader.nextLine();
             System.out.println("Enter the ID of the magazine to delete:");
             String idM = reader.nextLine();
             boolean deleted = controller.deleteMagazine(idM);
@@ -414,7 +428,7 @@ public class Main{
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
         System.out.println("*  - Buy a book or subscribe a magazine *");
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
-
+        reader.nextLine();
         System.out.println("Enter the ID number of the user you want");
         String ccUser = reader.nextLine();
 

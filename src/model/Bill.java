@@ -67,8 +67,6 @@ public class Bill {
     public void setFormat(DateFormat format) {
         this.format = format;
     }
-
-
     
 
 

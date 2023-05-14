@@ -31,7 +31,6 @@ public class Magazine extends BibliographicProducts implements Buyable{
         
     }
 
-
     public TypeMagazine getCategory() {
         return category;
     }

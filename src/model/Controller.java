@@ -13,6 +13,7 @@ public class Controller{
     public Controller(){
         listAllUsers = new ArrayList<>();
         listAllBibliographicProducts = new ArrayList<>();
+        testCase();
     }
 
     public void testCase(){
@@ -22,6 +23,12 @@ public class Controller{
 
         listAllUsers.add(usertest);
         listAllUsers.add(usertest2);
+
+        Book book = new Book("12345678", "Caperucita Roja", 128, date, "caperucita.com", 20,"Es un libro infantil con una buena moraleja", TypeBook.HISTORICAL_NOVEL, 10.000, 2);
+        Magazine magazine = new Magazine("34567890", "Amimales en Extincion", 30, date, "animal.com", 10, TypeMagazine.VARIETIES, 8.000, "media",  1);
+    
+        listAllBibliographicProducts.add(book);
+        listAllBibliographicProducts.add(magazine);
     }
 
     public boolean createUser(int userType, String name, String cc, Calendar date){
@@ -209,23 +216,12 @@ public class Controller{
         return false;
     }
 
-    public boolean createObjects(){
-        for (int i = 0; i < 3; i++) {
-
-            BibliographicProducts BOOK = new Book(getUsers(), getProducts(), i, null, getBPMagazine(), i, getBPBook(), null, i, i);
-            listAllBibliographicProducts.add(BOOK);
-            
-        }
-
-        return false;
-    }
-
     public String getProducts(){
         String msg = "";
 
         for(int i=0; i<listAllBibliographicProducts.size();i++){
 
-             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+" - "+listAllBibliographicProducts.get(i).getNameBP();
 
         }
         
@@ -241,7 +237,7 @@ public class Controller{
 
             if(listAllBibliographicProducts.get(i) instanceof Book){
 
-             msg += "\n" + (i+1) +". "+  listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+  listAllBibliographicProducts.get(i).getId()+" - "+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }
@@ -257,7 +253,7 @@ public class Controller{
 
             if(listAllBibliographicProducts.get(i) instanceof Magazine){
 
-             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+"-"+listAllBibliographicProducts.get(i).getNameBP();
+             msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+" - "+listAllBibliographicProducts.get(i).getNameBP();
 
             }
         }
@@ -270,7 +266,7 @@ public class Controller{
 
         for(int i=0; i<listAllUsers.size();i++){
 
-            msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+            msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+" - "+listAllUsers.get(i).getName();
 
         }
         
@@ -282,7 +278,7 @@ public class Controller{
 
         for(int i=0; i<listAllUsers.size();i++){
             if(listAllUsers.get(i) instanceof UserRegular){
-             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+" - "+listAllUsers.get(i).getName();
             }
         }
         
@@ -294,7 +290,7 @@ public class Controller{
 
         for(int i=0; i<listAllUsers.size();i++){
             if(listAllUsers.get(i) instanceof UserPremium){
-             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+"-"+listAllUsers.get(i).getName();
+             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+" - "+listAllUsers.get(i).getName();
             }
         }
         
@@ -331,6 +327,8 @@ public class Controller{
         }
         return product;
     }
+
+
 
 }
 

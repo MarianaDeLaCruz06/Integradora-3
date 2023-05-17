@@ -52,10 +52,12 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Bill: product =" + product.getNameBP()
-            + ", dateTransaction =" + changeFormat(dateTransaction) 
-            + ", namebuyer=" + namebuyer + " ";
+        return "Bill:\n"
+                + "Product: " + product.getNameBP() + "\n"
+                + "Transaction Date: " + changeFormat(dateTransaction) + "\n"
+                + "Buyer's Name: " + namebuyer + "\n";
     }
+    
 
     public String changeFormat(Calendar date){
         String formatDate= simpleDateFormat.format(date.getTime());

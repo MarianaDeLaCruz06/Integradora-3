@@ -271,7 +271,7 @@ public class Main{
             System.out.println("*  Modify a New Book  *");
             System.out.println("* * * * * * * * * * * *");
            
-            System.out.println("Select the book you werw saying to modify");
+            System.out.println("Select the book you were saying to modify");
             int optionModify = reader.nextInt();
 
             reader.nextLine();
@@ -438,23 +438,14 @@ public class Main{
         System.out.println("Enter the ID number of the book you want");
         String idPB = reader.nextLine();
         
-        //mostrar el usuario
-        //Pedir el usuario que compra
-        //Muestro los productos
-        //Pido el producto
         
         if(controller.verifyBook(idPB)){
 
-            controller.buyBook(ccUser, idPB);
-            System.out.println("Buy the book");
+            controller.buyOrSubscribe(ccUser, idPB);
+            
 
         }
-        else{
-            controller.subscribeMagazine(ccUser, idPB);
-            System.out.println("Subscribe the Magazine");
-        }
-        //Verificar si es libro o un magazine
-        // Si es libro llamo al metodo comprar Libro y viceversa
+       
 
     }
 

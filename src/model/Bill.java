@@ -2,33 +2,24 @@ package model;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public class Bill {
-    private double amountPaid;
+    private BibliographicProducts product;
     private Calendar dateTransaction;
-    private String nameUser;
-    private String nameProduct;
+    private String namebuyer;
 
-
+    private SimpleDateFormat simpleDateFormat;
     private DateFormat format;
 
-    public Bill(double amountPaid, Calendar dateTransaction, String nameUser, String nameProduct){
-        this.amountPaid = amountPaid;
+    public Bill(Calendar dateTransaction, BibliographicProducts product,String namebuyer){
+        this.product = product;
         this.dateTransaction = dateTransaction;
-        this.nameUser = nameUser;
-        this.nameProduct = nameProduct;
+        this.namebuyer=namebuyer;
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
     }
 
-    public double getAmountPaid() {
-        return amountPaid;
-    }
-
-
-    public void setAmountPaid(double amountPaid) {
-        this.amountPaid = amountPaid;
-    }
-
-
+   
     public Calendar getDateTransaction() {
         return dateTransaction;
     }
@@ -37,27 +28,6 @@ public class Bill {
     public void setDateTransaction(Calendar dateTransaction) {
         this.dateTransaction = dateTransaction;
     }
-
-
-    public String getNameUser() {
-        return nameUser;
-    }
-
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
-    }
-
-
-    public String getNameProduct() {
-        return nameProduct;
-    }
-
-
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
-    }
-
 
     public DateFormat getFormat() {
         return format;
@@ -68,6 +38,28 @@ public class Bill {
         this.format = format;
     }
     
+    public String getNamebuyer() {
+        return namebuyer;
+    }
 
+
+    public void setNamebuyer(String namebuyer) {
+        this.namebuyer = namebuyer;
+    }
+
+
+
+
+    @Override
+    public String toString() {
+        return "Bill: product =" + product.getNameBP()
+            + ", dateTransaction =" + changeFormat(dateTransaction) 
+            + ", namebuyer=" + namebuyer + " ";
+    }
+
+    public String changeFormat(Calendar date){
+        String formatDate= simpleDateFormat.format(date.getTime());
+        return formatDate;
+    }
 
 }

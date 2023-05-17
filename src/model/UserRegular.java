@@ -26,6 +26,17 @@ public class UserRegular extends User{
         return false;
     }
 
+    public boolean addBill(Bill newBill){
+        for (int i = 0; i < listAllBills.length; i++) {
+            if(listAllBills[i] == null){
+                listAllBills[i] = newBill;
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
     @Override
     public boolean subscribeMagazine(Buyable productToSubscribeM){
         if (productToSubscribeM instanceof Magazine && verifyMagazineAmount()){
@@ -41,7 +52,7 @@ public class UserRegular extends User{
         return false;
     }
 
-    private boolean verifyBookAmount(){
+    boolean verifyBookAmount(){
         int counter = 0;
         for (int i = 0; i < listOfBiblioProducts.length; i++) {
             if (listOfBiblioProducts[i] instanceof Book) {
@@ -54,7 +65,7 @@ public class UserRegular extends User{
         return false;
     }
 
-    private boolean verifyMagazineAmount(){
+    boolean verifyMagazineAmount(){
         int counter2 = 0;
         for (int i = 0; i < listOfBiblioProducts.length; i++) {
             if (listOfBiblioProducts[i] instanceof Magazine) {
@@ -68,5 +79,19 @@ public class UserRegular extends User{
     }
 
     
-    
+    public BibliographicProducts[] getListOfBiblioProducts() {
+        return listOfBiblioProducts;
+    }
+
+    public void setListOfBiblioProducts(BibliographicProducts[] listOfBiblioProducts) {
+        this.listOfBiblioProducts = listOfBiblioProducts;
+    }
+
+    public Bill[] getListAllBills() {
+        return listAllBills;
+    }
+
+    public void setListAllBills(Bill[] listAllBills) {
+        this.listAllBills = listAllBills;
+    }
 }

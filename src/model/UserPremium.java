@@ -8,6 +8,7 @@ public class UserPremium extends User{
     private ArrayList<BibliographicProducts> listAllBibliographicProducts;
     private ArrayList<Bill> listAllBill;
 
+
     public UserPremium(String name, String cc, Calendar date) {
         super(name, cc, date);
     }
@@ -30,5 +31,21 @@ public class UserPremium extends User{
             return listAllBibliographicProducts.add(boughtMagazine);
         } 
         return false;
+    }
+
+    public ArrayList<BibliographicProducts> getListAllBibliographicProducts() {
+        return listAllBibliographicProducts;
+    }
+
+    public void setListAllBibliographicProducts(ArrayList<BibliographicProducts> listAllBibliographicProducts) {
+        this.listAllBibliographicProducts = listAllBibliographicProducts;
+    }
+
+    public ArrayList<Bill> getListAllBill() {
+        return listAllBill;
+    }
+
+    public void setListAllBill(ArrayList<Bill> listAllBill) {
+        this.listAllBill = listAllBill;
     }
 }

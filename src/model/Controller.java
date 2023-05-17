@@ -151,70 +151,64 @@ public class Controller{
         return false;
     }
 
-    public boolean buyBook(String ccUser, String idBP){
-        User userx = null;
-        Book booky = null;
+    public void buyOrSubscribe(String ccUser, String idBP){
 
-        for (User user : listAllUsers) {
-            if(user.getCc().equals(ccUser)){
-                userx = user;
+        boolean wasBuy = false;
+        int posUserx = searchUser(ccUser);
+        
+        int posBooky = searchBP(idBP);
+
+        if (posUserx != -1 && posBooky != -1){
+            User user = listAllUsers.get(posUserx);
+            String namebuyer= user.getName() ;
+            BibliographicProducts product = listAllBibliographicProducts.get(posBooky);
+
+            if(user instanceof UserRegular){
+
+                if(product instanceof Magazine && ((UserRegular) user).verifyMagazineAmount()){
+                    user.subscribeMagazine((Buyable) product);
+                    ((Buyable) product).buy();
+                    Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
+                    System.out.println(newBill.toString());
+                    
+                    // user.addBill(newBill);
+                    wasBuy = true;
+                }else if ( product instanceof Book && ((UserRegular) user).verifyBookAmount()){
+                    user.buyBook((Buyable) product);
+                    ((Buyable) product).buy();
+                    wasBuy = true;
+                    Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
+                    System.out.println(newBill.toString());
+                    //Guardar bill
+                }else{
+                    System.out.println("No tienes espacio para comprar");
+                }
+
+            }else{
+
+                if(product instanceof Magazine){
+                    user.subscribeMagazine((Buyable) product);
+                    ((Buyable) product).buy();
+                    Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);   
+                    System.out.println(newBill.toString());                 
+                }else{
+                    user.buyBook((Buyable) product);
+                    ((Buyable) product).buy();
+                    Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
+                    System.out.println(newBill.toString());
+                }
+                wasBuy = true;
             }
-        }
-
-        if(verifyBook(idBP)){
-            booky= (Book)getBibliographicProduct(idBP);
-
-        }
-        /*
-            for (BibliographicProducts book : listAllBibliographicProducts) {
-            // Verificar si es un libro y si tiene el ID correspondiente
-            if (book instanceof Book && book.getId().equals(idBP)) {
-                booky = (Book) book;
+            if (wasBuy){
+                System.out.println(user.getName());
+                System.out.println(product.getNameBP());
+                
             }
-        }
-         */
 
-        if(userx==null || booky == null){
-            return false;
-        }
-        // Aqui falta verificar si el usuario es premium o estandar, si  es estandar verificar si puede comprar 
 
-        return userx.buyBook(booky);
+        }
     }
 
-    public boolean subscribeMagazine(String ccUser, String idBP){
-        User userx = null;
-        Magazine magaziney = null;
-        for (User user : listAllUsers) {
-            if(user.getCc().equals(ccUser)){
-                userx = user;
-            }
-        }
-        for (BibliographicProducts magazine : listAllBibliographicProducts) {
-            // Verificar si es una revista y si tiene el ID correspondiente
-            if (magazine instanceof Magazine && magazine.getId().equals(idBP)) {
-                magaziney = (Magazine) magazine;
-            }
-        }
-        if(userx==null || magaziney == null){
-            return false;
-        }
-        // Aqui falta verificar si el usuario es premium o estandar, si es estandar verificar si puede comprar 
-        return userx.subscribeMagazine(magaziney); 
-    }
-
-    public boolean generateBill(int optionUserBill, String optionProductBill){
-       
-       String saveNameBook;
-
-
-       if(listAllBibliographicProducts.get(optionUserBill) instanceof Book){
-
-       }
-
-
-        return false;
-    }
 
     public String getProducts(){
         String msg = "";
@@ -315,6 +309,8 @@ public class Controller{
         return isABook;
     }
 
+
+
     public BibliographicProducts getBibliographicProduct(String idBP){
         BibliographicProducts product = null;
         boolean found =false;
@@ -327,7 +323,28 @@ public class Controller{
         }
         return product;
     }
+    
 
+    public int searchUser(String ccUser) {
+       int pos = -1;
+       for (int i = 0; i < listAllUsers.size(); i++) {
+        if(ccUser.equals(listAllUsers.get(i).getCc())){
+            pos = i;
+        }
+       } 
+       return pos;
+    }
+
+    public int searchBP(String idProduct) {
+        int pos = -1;
+        for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
+         if(idProduct.equals(listAllBibliographicProducts.get(i).getId())){
+             pos = i;
+         }
+        } 
+        return pos;
+     }
+ 
 
 
 }

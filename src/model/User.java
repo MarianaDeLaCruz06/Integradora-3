@@ -8,7 +8,8 @@ public abstract class User {
     private String name;
     private String cc;
     private Calendar date;
-
+    
+    private SimpleDateFormat simpleDateFormat;
     private DateFormat formatteDate;
 
     public User(String name, String cc, Calendar date){
@@ -56,6 +57,8 @@ public abstract class User {
     public abstract boolean buyBook(Buyable productToBuyB);
 
     public abstract boolean subscribeMagazine(Buyable productToSubscribeM);
+
+    public abstract String getProducts();
     
 
     public String toString() {
@@ -65,6 +68,14 @@ public abstract class User {
         
         return msg;
     }
+
+    
+
+    public String changeFormat(Calendar date){
+        String formatDate = simpleDateFormat.format(date.getTime());
+        return formatDate;
+    }
+
     
 }
 

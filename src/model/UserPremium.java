@@ -48,4 +48,17 @@ public class UserPremium extends User{
     public void setListAllBill(ArrayList<Bill> listAllBill) {
         this.listAllBill = listAllBill;
     }
+
+    public String getProducts(){
+        String msg = "";
+
+        for(int i=0; i<listAllBibliographicProducts.size();i++){
+            
+            msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+" - "+listAllBibliographicProducts.get(i).getNameBP();
+            
+        }
+        
+        return msg;
+    }
+
 }

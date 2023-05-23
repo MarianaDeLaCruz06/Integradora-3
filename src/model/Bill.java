@@ -47,9 +47,6 @@ public class Bill {
         this.namebuyer = namebuyer;
     }
 
-
-
-
     @Override
     public String toString() {
         return "Bill:\n"
@@ -60,7 +57,7 @@ public class Bill {
     
 
     public String changeFormat(Calendar date){
-        String formatDate= simpleDateFormat.format(date.getTime());
+        String formatDate = simpleDateFormat.format(date.getTime());
         return formatDate;
     }
 

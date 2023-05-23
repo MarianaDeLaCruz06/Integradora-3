@@ -204,9 +204,24 @@ public class Controller{
                 System.out.println(product.getNameBP());
                 
             }
-
-
         }
+    }
+
+    public String libraryUser(String ccUser){
+        String msg = "";
+        User user;
+        
+        if(typeUser(ccUser)){
+            
+            System.out.println("The user is Regular");
+            msg = getProducts();
+        } else {
+
+            System.out.println("The user is Premium");
+            msg = getProducts();
+        }
+        
+        return msg;
     }
 
 
@@ -309,6 +324,17 @@ public class Controller{
         return isABook;
     }
 
+    public boolean verifyMagazine(String idBP){
+        boolean isAMagazine = false;
+        BibliographicProducts product =getBibliographicProduct(idBP);
+        if(product!= null){
+            if(product instanceof Magazine){
+                isAMagazine=true;
+            }
+        }
+        return isAMagazine;
+    }
+
 
 
     public BibliographicProducts getBibliographicProduct(String idBP){
@@ -334,6 +360,21 @@ public class Controller{
        } 
        return pos;
     }
+
+    public boolean typeUser(String ccUser) {
+        for (User user : listAllUsers) {
+            if (user.getCc().equals(ccUser)) {
+                if (user instanceof UserRegular) {
+                    return true; // User is Regular
+                } else if (user instanceof UserPremium) {
+                    return false; // User is Premium
+                }
+            }
+        }
+        
+        return false; // User not found
+    }
+    
 
     public int searchBP(String idProduct) {
         int pos = -1;

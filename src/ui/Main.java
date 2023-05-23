@@ -288,6 +288,9 @@ public class Main{
             int monthBModify = reader.nextInt();
             System.out.println("Enter the publication year:");
             int yearBModify = reader.nextInt();
+
+            reader.nextLine();
+
             System.out.println("Enter the URL:");
             String URLBModify = reader.next();
             System.out.println("Enter the URL:");
@@ -327,7 +330,6 @@ public class Main{
             System.out.println("Select the magazine you werw saying to modify");
             int optionMModify = reader.nextInt();
 
-            reader.nextLine();
             System.out.println("Enter the ID:");
             String idMModify = reader.nextLine();
             System.out.println("Enter the name:");
@@ -340,6 +342,9 @@ public class Main{
             int monthMModify = reader.nextInt();
             System.out.println("Enter the publication year:");
             int yearMModify = reader.nextInt();
+
+            reader.nextLine();
+
             System.out.println("Enter the URL:");
             String URLMModify = reader.nextLine();
             System.out.println("Enter the accumulated read pages:");
@@ -348,6 +353,9 @@ public class Main{
             int categoryIndexModify = reader.nextInt();
             System.out.println("Enter the value of subscription:");
             double valueSubscriptionModify = reader.nextDouble();
+
+            reader.nextLine();
+            
             System.out.println("Enter the emission period:");
             String emissionPeriodModify = reader.nextLine();
             System.out.println("Enter the number of subscriptions:");
@@ -426,7 +434,7 @@ public class Main{
         System.out.println(view);
 
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
-        System.out.println("*  - Buy a book or subscribe a magazine *");
+        System.out.println("* - Buy a book or subscribe a magazine  *");
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
         reader.nextLine();
         System.out.println("Enter the ID number of the user you want");
@@ -435,7 +443,7 @@ public class Main{
         String view2 = controller.getProducts();
         System.out.println(view2);
 
-        System.out.println("Enter the ID number of the book you want");
+        System.out.println("Enter the ID number of the book or magazine you want");
         String idPB = reader.nextLine();
         
         
@@ -443,17 +451,32 @@ public class Main{
 
             controller.buyOrSubscribe(ccUser, idPB);
             
-
         }
-       
 
     }
 
     public void simulateReadingSession() {
-        System.out.println("Simulación de sesión de lectura");
-        System.out.println("-----------------------------");
-        
 
+        System.out.println("* * * * * * * * * * * *");
+        System.out.println("*  Reading simulation *");
+        System.out.println("* * * * * * * * * * * *");
+        
+        String view = controller.getUsers();
+        System.out.println(view);
+
+        reader.nextLine();
+
+        System.out.println("Enter the ID number of the user you want");
+        String ccUser = reader.nextLine();
+
+        String view2 = controller.getProducts();
+        System.out.println(view2);
+
+        System.out.println("Enter the ID number of the book or magazine you want");
+        String idBP = reader.nextLine();
+
+        controller.libraryUser(ccUser);
+        
         // Obtener el producto bibliográfico y la página actual de alguna manera
         String productName = "Caperucita Roja";
         int currentPage = 1;

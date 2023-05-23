@@ -76,6 +76,19 @@ public class UserRegular extends User{
             return true;
         }
         return false;
+
+    }
+
+    public String getProducts(){
+        String msg = "";
+
+        for(int i=0; i<listOfBiblioProducts.length;i++){
+
+            msg += "\n" + (i + 1) + ". " + listOfBiblioProducts[i];
+
+        }
+        
+        return msg;
     }
 
     

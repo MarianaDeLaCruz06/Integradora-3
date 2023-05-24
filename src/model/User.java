@@ -60,6 +60,8 @@ public abstract class User {
 
     public abstract String getProducts();
     
+    public abstract int sumNumPagesBook();
+    public abstract int sumNumPagesMagazine();
 
     public String toString() {
         String msg = "";

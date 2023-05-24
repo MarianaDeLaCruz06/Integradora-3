@@ -11,6 +11,34 @@ public class UserRegular extends User{
         super(name, cc, date);
     }
 
+    public int sumNumPagesBook(){
+        int acumReadB = 0;
+
+        for (int i = 0; i < listOfBiblioProducts.length; i++) {
+            if (listOfBiblioProducts[i] instanceof Book) {
+                acumReadB += listOfBiblioProducts[i].getAcumReadPages();
+            }
+        }
+     
+        return acumReadB;
+    }
+            
+        
+    
+
+    public int sumNumPagesMagazine(){
+        int acumReadM = 0;
+
+        for (int i = 0; i < listOfBiblioProducts.length; i++) {
+            if (listOfBiblioProducts[i] instanceof Book) {
+                acumReadM += listOfBiblioProducts[i].getAcumReadPages();
+            }
+        }
+     
+        return acumReadM;
+        
+    }
+
     @Override
     public boolean buyBook(Buyable productToBuyB){
         if (productToBuyB instanceof Book && verifyBookAmount()) {

@@ -121,7 +121,7 @@ public class Main{
 
                    switch (optionRead) {
                     case 1:
-                        
+                        reportAcumReadPages();
                     break;
 
                     case 2:
@@ -212,8 +212,8 @@ public class Main{
         int yearB = reader.nextInt();
         System.out.println("Enter the URL:");
         String URLb = reader.next();
-        System.out.println("Enter the pages acum");
-        int acumReadPagesB = reader.nextInt();
+        
+        int acumReadPagesB = 0;
 
         System.out.println("Enter the review:");
         String reviewShort = reader.next();
@@ -224,8 +224,8 @@ public class Main{
         int genderIndex = reader.nextInt();
         System.out.println("Enter the selling value:");
         double sellingValue = reader.nextDouble();
-        System.out.println("Enter the number of copies:");
-        int numCopies = reader.nextInt();
+        
+        int numCopies = 0;
 
         
         if (controller.registerBook(idB, nameBP, numPagesB, dayB, monthB, yearB, URLb, acumReadPagesB, reviewShort, genderIndex, sellingValue, numCopies)) {
@@ -259,8 +259,8 @@ public class Main{
         int yearM = reader.nextInt();
         System.out.println("Enter the URL:");
         String URLm = reader.nextLine();
-        System.out.println("Enter the accumulated read pages:");
-        int acumReadPagesM = reader.nextInt();
+        
+        int acumReadPagesM = 0;
 
         reader.nextLine();
 
@@ -270,8 +270,8 @@ public class Main{
         double valueSubscription = reader.nextDouble();
         System.out.println("Enter the emission period:");
         String emissionPeriod = reader.nextLine();
-        System.out.println("Enter the number of subscriptions:");
-        int numSubscription = reader.nextInt();
+        
+        int numSubscription = 0;
 
         // Registrar la nueva revista en la biblioteca
         boolean magazineRegistered = controller.registerMagazine(idM, namePB, numPagesM, dayM, monthM, yearM, URLm, acumReadPagesM, categoryIndex, valueSubscription, emissionPeriod, numSubscription);
@@ -557,11 +557,13 @@ public class Main{
 
         switch(optionARP){
             case 1:
-                System.out.println();
+                System.out.println("Number of pages read of all books");
+                System.out.println(controller.numPagesReadBook());
             break;
 
             case 2:
-                System.out.println();
+                System.out.println("Number of pages read from all magazines");
+                System.out.println(controller.numPagesReadMagazine());
             break;
 
             default:

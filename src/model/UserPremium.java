@@ -14,6 +14,31 @@ public class UserPremium extends User{
         super(name, cc, date);
     }
 
+    public int sumNumPagesBook(){
+        int acumReadB = 0;
+
+        for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
+            if (listAllBibliographicProducts.get(i) instanceof Book) {
+                acumReadB += listAllBibliographicProducts.get(i).getAcumReadPages();
+            }
+        }
+     
+        return acumReadB;
+    }
+
+    public int sumNumPagesMagazine(){
+        int acumReadM = 0;
+
+        for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
+            if (listAllBibliographicProducts.get(i) instanceof Magazine) {
+                acumReadM += listAllBibliographicProducts.get(i).getAcumReadPages();
+            }
+        }
+     
+        return acumReadM;
+    }
+
+
     @Override
     public boolean buyBook(Buyable productToBuyB) {
         if (productToBuyB instanceof Book){

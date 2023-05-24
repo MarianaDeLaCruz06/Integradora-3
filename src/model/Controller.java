@@ -401,5 +401,27 @@ public class Controller{
         } 
         return pos;
     }
+
+
+    public int numPagesReadBook() {
+        int acumReadB = 0;
+
+        for (int i = 0; i < listAllUsers.size(); i++) {
+            acumReadB += listAllUsers.get(i).sumNumPagesBook(); 
+        }
+
+        return acumReadB;
+    }
+
+    public int numPagesReadMagazine() {
+        int acumReadB = 0;
+
+        for (int i = 0; i < listAllUsers.size(); i++) {
+            acumReadB += listAllUsers.get(i).sumNumPagesMagazine(); 
+        }
+
+        return acumReadB;
+    }
+
 }
 

@@ -3,7 +3,7 @@ package model;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public abstract class BibliographicProducts {
+public abstract class BibliographicProducts implements Comparable<BibliographicProducts> {
     
     private String id;
     private String nameBP;
@@ -89,6 +89,14 @@ public abstract class BibliographicProducts {
                 + ", URL" + URL
                 + ", Acumulate Read Pages" + acumReadPages;
     }
+
+    @Override
+    public int compareTo(BibliographicProducts o) {
+        
+        return this.getPublicateDate().compareTo(o.getPublicateDate());
+    }
+
+    
 
     
 }

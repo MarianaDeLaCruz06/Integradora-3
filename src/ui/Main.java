@@ -35,8 +35,8 @@ public class Main{
             System.out.println("2. Manage bibliographic products");
             System.out.println("3. Objects in the system for each type of user and bibliographic product");
             System.out.println("4. Here you can buy a book or subscribe to a magazine");
-            System.out.println("5. Reading session");
-            System.out.println("6. User Bibliographic Products Library");
+            System.out.println("5. User Bibliographic Products Library");
+            System.out.println("6. Reading session");
             System.out.println("7. Generate reports");
             System.out.println("8. Exit");
 
@@ -103,15 +103,46 @@ public class Main{
                 break;
 
                 case 5:
-                    simulateReadingSession();
+                    
                 break;
 
                 case 6:
-                   
+                    simulateReadingSession();
                 break;
 
                 case 7:
-                   
+                   System.out.println("1. Type product (Book or Magazine) and number of pages read");
+                   System.out.println("2. Inform the genre of book and category of magazine most read");
+                   System.out.println("3. Report the Top 5 most read books and Top 5 most read magazines on the platform");
+                   System.out.println();
+                   System.out.println();
+
+                   int optionRead = reader.nextInt();
+
+                   switch (optionRead) {
+                    case 1:
+                        
+                    break;
+
+                    case 2:
+                        
+                    break;
+
+                    case 3:
+                        
+                    break;
+
+                    case 4:
+                        
+                    break;
+
+                    case 5:
+                        
+                    break;
+                    default:
+                        break;
+                   }
+
                 break;
 
                 case 8:
@@ -160,8 +191,6 @@ public class Main{
 
 
     private void registerBook() {
-
-        reader.nextLine();
 
         System.out.println("* * * * * * * * * * * * *");
         System.out.println("*  Register a New Book  *");
@@ -519,5 +548,26 @@ public class Main{
             
             System.out.println();
         }
+    }
+
+    public void reportAcumReadPages() {
+        System.out.println("1. Book");
+        System.out.println("2. Magazine");
+        int optionARP = reader.nextInt();
+
+        switch(optionARP){
+            case 1:
+                System.out.println();
+            break;
+
+            case 2:
+                System.out.println();
+            break;
+
+            default:
+                System.out.println("Invalid option, type a valid option again");
+            break;
+        }
+
     }
 }

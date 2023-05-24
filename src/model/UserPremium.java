@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.ArrayList;
 
 public class UserPremium extends User{
@@ -48,13 +49,33 @@ public class UserPremium extends User{
     public void setListAllBill(ArrayList<Bill> listAllBill) {
         this.listAllBill = listAllBill;
     }
-
+    public void insertionSort() { 
+        
+        for (int rojo = 1; rojo < listAllBibliographicProducts.size(); rojo++){
+            for (int verde = 0; verde < rojo; verde++) {
+                if (listAllBibliographicProducts.get(rojo).getPublicateDate().compareTo(listAllBibliographicProducts.get(verde).getPublicateDate()) < 0) {
+                    listAllBibliographicProducts.add(verde, listAllBibliographicProducts.remove(rojo));
+                    break;
+                }
+            }
+        }
+    }
+    
+    @Override
     public String getProducts(){
-        String msg = "";
+        String msg = "   |   0   |   1   |   2   |   3   |   4   |\n";
+
+        insertionSort();
+        
 
         for(int i=0; i<listAllBibliographicProducts.size();i++){
+
             
-            msg += "\n" + (i+1) +". "+ listAllBibliographicProducts.get(i).getId()+" - "+listAllBibliographicProducts.get(i).getNameBP();
+            msg +=   "   |  " +  listAllBibliographicProducts.get(i).getId() + "  |"  + (((i-1)%4 == 0)?"\n":"");
+
+
+            
+        
             
         }
         

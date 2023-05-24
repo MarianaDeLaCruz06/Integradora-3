@@ -374,6 +374,22 @@ public class Controller{
         
         return false; // User not found
     }
+
+    public boolean typeProducts(String idBP) {
+        for (BibliographicProducts products: listAllBibliographicProducts) {
+            if (products.getId().equals(idBP)) {
+                if (products instanceof Book) {
+                    return true; // User is Regular
+                } else if (products instanceof Magazine) {
+                    return false; // User is Premium
+                }
+            }
+        }
+        
+        return false; // User not found
+    }
+
+    
     
 
     public int searchBP(String idProduct) {

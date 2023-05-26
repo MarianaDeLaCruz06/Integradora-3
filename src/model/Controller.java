@@ -3,12 +3,15 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.text.SimpleDateFormat;
 
 public class Controller{
 
     private ArrayList<User> listAllUsers;
     private ArrayList<BibliographicProducts> listAllBibliographicProducts;
     private ArrayList<Bill> listAllBill;
+
+    private SimpleDateFormat simpleDateFormat;
 
     public Controller(){
         listAllUsers = new ArrayList<>();
@@ -153,7 +156,7 @@ public class Controller{
 
     public void buyOrSubscribe(String ccUser, String idBP){
 
-        boolean wasBuy = false;
+       // boolean wasBuy = false;
         int posUserx = searchUser(ccUser);
         
         int posBooky = searchBP(idBP);
@@ -171,14 +174,15 @@ public class Controller{
                     Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
                     System.out.println(newBill.toString());
                     
-                    // user.addBill(newBill);
-                    wasBuy = true;
+                    // wasBuy = true;
+
                 }else if ( product instanceof Book && ((UserRegular) user).verifyBookAmount()){
                     user.buyBook((Buyable) product);
                     ((Buyable) product).buy();
-                    wasBuy = true;
+                    // wasBuy = true;
                     Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
                     System.out.println(newBill.toString());
+
                     //Guardar bill
                 }else{
                     System.out.println("No tienes espacio para comprar");
@@ -197,16 +201,96 @@ public class Controller{
                     Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
                     System.out.println(newBill.toString());
                 }
-                wasBuy = true;
+                // wasBuy = true;
             }
+
+            /* 
             if (wasBuy){
                 System.out.println(user.getName());
                 System.out.println(product.getNameBP());
                 
             }
+            */
         }
     }
 
+    public void ViewSubscribeMagazine(String ccUser) {
+        
+    }
+
+    /**
+    public String viewLibrary(String ccUser){
+        String msg = "";
+        msg = ((UserPremium)listAllUsers.getCc().equals(ccUser)).getProducts();
+        return msg;
+    }
+    */
+     
+    public boolean viewLibrary(String ccUser) {
+        boolean libraryViewed = false;
+    
+        for (User user : listAllUsers) {
+            if (user.getCc().equals(ccUser)) {
+                
+                if (user instanceof UserPremium) {
+                    UserPremium premiumUser = (UserPremium) user;
+                    String products = premiumUser.getProducts();
+                    if (products != null && !products.equals("")) {
+                        libraryViewed = true;
+                    }
+                }else if(user instanceof UserRegular){
+                    UserRegular regularUser = (UserRegular) user;
+                    String products = regularUser.getProducts();
+                    if (products != null && !products.equals("")) {
+                        libraryViewed = true;
+                    }
+                }
+
+                break;
+            }
+        }
+    
+        return libraryViewed;
+    }
+
+    public String viewMagazineSubscribe(String ccUser) {
+        String msg = "";
+        User user = null;
+    
+        for (User currentUser : listAllUsers) {
+            if (currentUser.getCc().equals(ccUser)) {
+                user = currentUser;
+                break;
+            }
+        }
+    
+        if (user != null) {
+            msg = user.showMagazine();
+        }
+    
+        return msg;
+    }
+
+    public boolean cancelSubs(String ccUser, String idBP) {
+        boolean indication = false;
+        User user = null;
+    
+        for (User currentUser : listAllUsers) {
+            if (currentUser.getCc().equals(ccUser)) {
+                user = currentUser;
+                break;
+            }
+        }
+    
+        if (user != null) {
+            indication = user.cancelSubscription(idBP);
+        }
+    
+        return indication;
+    }
+    
+    
+    
     public String libraryUser(String ccUser){
         String msg = "";
         User user;
@@ -223,6 +307,7 @@ public class Controller{
         
         return msg;
     }
+    
 
 
     public String getProducts(){
@@ -421,6 +506,11 @@ public class Controller{
         }
 
         return acumReadB;
+    }
+
+    public String changeFormat(Calendar date){
+        String formatDate = simpleDateFormat.format(date.getTime());
+        return formatDate;
     }
 
 }

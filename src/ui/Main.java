@@ -35,10 +35,11 @@ public class Main{
             System.out.println("2. Manage bibliographic products");
             System.out.println("3. Objects in the system for each type of user and bibliographic product");
             System.out.println("4. Here you can buy a book or subscribe to a magazine");
-            System.out.println("5. User Bibliographic Products Library");
-            System.out.println("6. Reading session");
-            System.out.println("7. Generate reports");
-            System.out.println("8. Exit");
+            System.out.println("5. Cancel a magazine subscription");
+            System.out.println("6. User Bibliographic Products Library");
+            System.out.println("7. Reading session");
+            System.out.println("8. Generate reports");
+            System.out.println("9. Exit");
 
             System.out.print("Select an option: ");
             int option = reader.nextInt();
@@ -103,18 +104,22 @@ public class Main{
                 break;
 
                 case 5:
-                    
+                    cancelSubs();
                 break;
 
-                case 6:
-                    simulateReadingSession();
+                case 6: 
+                    viewLibrary();
                 break;
 
                 case 7:
+                    simulateReadingSession();
+                break;
+
+                case 8:
                    System.out.println("1. Type product (Book or Magazine) and number of pages read");
                    System.out.println("2. Inform the genre of book and category of magazine most read");
                    System.out.println("3. Report the Top 5 most read books and Top 5 most read magazines on the platform");
-                   System.out.println();
+                   System.out.println("4. ");
                    System.out.println();
 
                    int optionRead = reader.nextInt();
@@ -145,7 +150,7 @@ public class Main{
 
                 break;
 
-                case 8:
+                case 9:
                     System.out.println("Goodbye!");
                     cond=true;
                 break;
@@ -482,6 +487,58 @@ public class Main{
             
         }
 
+    }
+
+    public void cancelSubs() {
+
+        reader.nextLine();
+
+        System.out.println("Write the id of the person");
+        String ccUser = reader.nextLine();
+
+        String view = controller.viewMagazineSubscribe(ccUser);
+
+        System.out.println(view);
+
+        System.out.println("Write the id of the magazine you want to unsubscribe");
+        String idBP = reader.nextLine();
+
+        if(controller.cancelSubs(ccUser,idBP)){
+            System.out.println("The unsubscription of the magazine was successful");
+        }else{
+            System.out.println("An error occurred, the journal could not be deleted");
+        }
+
+    }
+
+    public void viewLibrary() {
+
+        System.out.println("* * * * * * * * *");
+        System.out.println("*  Your library *");
+        System.out.println("* * * * * * * * *");
+        
+    
+        System.out.println("1. Regular");
+        String view = controller.getUsersRegular();
+        System.out.println(view);
+        System.out.println("2. Premium");
+        String view2 = controller.getUsersPremium();
+        System.out.println(view2);
+
+        System.out.println("Put the ID of the user you want to select?");
+        String ccUser = reader.nextLine();
+        
+        if(controller.typeUser(ccUser)){
+            System.out.println("The user you selected is Regular");
+        } else {
+            System.out.println("The user you selected is Premium");
+        }
+    
+        if (controller.viewLibrary(ccUser)) {
+            System.out.println("Library viewed successfully.");
+        } else {
+            System.out.println("Failed to view the library.");
+        }
     }
 
     public void simulateReadingSession() {

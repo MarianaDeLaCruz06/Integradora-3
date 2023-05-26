@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class UserRegular extends User{
@@ -23,9 +24,6 @@ public class UserRegular extends User{
         return acumReadB;
     }
             
-        
-    
-
     public int sumNumPagesMagazine(){
         int acumReadM = 0;
 
@@ -107,6 +105,62 @@ public class UserRegular extends User{
 
     }
 
+    public String showMagazine(){
+        String msg = "";
+
+        for (int i = 0; i < listOfBiblioProducts.length; i++) {
+            if(listOfBiblioProducts[i] instanceof Magazine){
+                msg += "\n"+(i + 1) + ". "+ listOfBiblioProducts[i].getId() + listOfBiblioProducts[i].getNameBP()+"\n";
+            }
+        }
+        return msg;
+    }
+
+    @Override
+    public boolean cancelSubscription(String idBP) {
+        
+        for (int i = 0; i < listOfBiblioProducts.length; i++) {
+            if (listOfBiblioProducts[i].getId().equals(idBP)) {
+                listOfBiblioProducts[i] = null;
+                return true; // Se canceló la suscripción
+            }
+        }
+        return false; // No se encontró la suscripción con ese idBP
+    }   
+
+    public void insertionSort(){
+        for (int rojo = 1; rojo < listOfBiblioProducts.length; rojo++){
+            for (int verde = 0; verde < rojo; verde++) {
+                if (listOfBiblioProducts[rojo].getPublicateDate().compareTo(listOfBiblioProducts[verde].getPublicateDate()) < 0) {
+                    BibliographicProducts temp = listOfBiblioProducts[rojo];
+                    listOfBiblioProducts[rojo] = listOfBiblioProducts[verde];
+                    listOfBiblioProducts[verde] = temp;
+                    break;
+                }
+            }
+        }
+    }
+
+    public void initMatrix(){
+        insertionSort();
+        //Arrays.toString(listOfBiblioProducts);
+        ArrayList<BibliographicProducts[][]> temp = new ArrayList<>((int)Math.ceil(listOfBiblioProducts.length/25));
+        int cont = 0;
+        for (int h = 0; h < temp.size(); h++) {
+            BibliographicProducts[][] matrix = new BibliographicProducts[5][5];
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j <= matrix.length; j++) {
+                    matrix[i][j] = listOfBiblioProducts[cont];
+                    cont++;
+                }
+            }
+            temp.add(matrix);
+        }
+
+        setListAllBiblio(temp);
+    }
+    
+
     public String getProducts(){
         String msg = "";
 
@@ -118,7 +172,6 @@ public class UserRegular extends User{
         
         return msg;
     }
-
     
     public BibliographicProducts[] getListOfBiblioProducts() {
         return listOfBiblioProducts;

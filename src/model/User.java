@@ -2,13 +2,15 @@ package model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public abstract class User {
     private String name;
     private String cc;
     private Calendar date;
-    
+    private ArrayList<BibliographicProducts[][]> listAllBiblio;
+
     private SimpleDateFormat simpleDateFormat;
     private DateFormat formatteDate;
 
@@ -53,6 +55,14 @@ public abstract class User {
     public void setFormatteDate(DateFormat formatteDate) {
         this.formatteDate = formatteDate;
     }
+        
+    public ArrayList<BibliographicProducts[][]> getListAllBiblio() {
+        return listAllBiblio;
+    }
+
+    public void setListAllBiblio(ArrayList<BibliographicProducts[][]> listAllBiblio) {
+        this.listAllBiblio = listAllBiblio;
+    }
 
     public abstract boolean buyBook(Buyable productToBuyB);
 
@@ -62,6 +72,10 @@ public abstract class User {
     
     public abstract int sumNumPagesBook();
     public abstract int sumNumPagesMagazine();
+
+    public abstract String showMagazine();
+
+    public abstract boolean cancelSubscription(String idBP);
 
     public String toString() {
         String msg = "";

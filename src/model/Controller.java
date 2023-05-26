@@ -260,7 +260,6 @@ public class Controller{
         for (User currentUser : listAllUsers) {
             if (currentUser.getCc().equals(ccUser)) {
                 user = currentUser;
-                break;
             }
         }
     
@@ -278,12 +277,11 @@ public class Controller{
         for (User currentUser : listAllUsers) {
             if (currentUser.getCc().equals(ccUser)) {
                 user = currentUser;
-                break;
             }
-        }
-    
-        if (user != null) {
-            indication = user.cancelSubscription(idBP);
+
+            if (user != null) {
+                indication = user.cancelSubscription(idBP);
+            }
         }
     
         return indication;
@@ -425,11 +423,18 @@ public class Controller{
     public BibliographicProducts getBibliographicProduct(String idBP){
         BibliographicProducts product = null;
         boolean found =false;
+        System.out.println("El codigo que llega: "+ idBP);
+
         for(int i=0; i<listAllBibliographicProducts.size()&&!found;i++){
+
+            System.out.println("Codigo en lista: "+listAllBibliographicProducts.get(i).getId());
+
             if(listAllBibliographicProducts.get(i).getId().equalsIgnoreCase(idBP)){
 
-                found =true;
-                product= listAllBibliographicProducts.get(i);
+                found = true;
+
+                System.out.println("Entra aca");
+                return listAllBibliographicProducts.get(i);
             }
         }
         return product;

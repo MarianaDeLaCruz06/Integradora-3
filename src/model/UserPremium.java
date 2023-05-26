@@ -64,8 +64,11 @@ public class UserPremium extends User{
             BibliographicProducts[][] matrix = new BibliographicProducts[5][5];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j <= matrix.length; j++) {
-                    matrix[i][j] = listAllBibliographicProducts.get(cont);
-                    cont++;
+
+                    if(cont<listAllBibliographicProducts.size()){
+                        matrix[i][j] = listAllBibliographicProducts.get(cont);
+                        cont++;
+                    }
                 }
             }
             temp.add(matrix);
@@ -125,7 +128,7 @@ public class UserPremium extends User{
     
     @Override
     public boolean cancelSubscription(String idBP) {
-        
+
         for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
             if (listAllBibliographicProducts.get(i).getId().equals(idBP)) {
                 listAllBibliographicProducts.remove(i);

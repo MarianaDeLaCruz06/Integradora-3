@@ -150,8 +150,10 @@ public class UserRegular extends User{
             BibliographicProducts[][] matrix = new BibliographicProducts[5][5];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j <= matrix.length; j++) {
-                    matrix[i][j] = listOfBiblioProducts[cont];
-                    cont++;
+                    if(cont<listOfBiblioProducts.length){
+                        matrix[i][j] = listOfBiblioProducts[cont];
+                        cont++;
+                    }
                 }
             }
             temp.add(matrix);

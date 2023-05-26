@@ -481,10 +481,13 @@ public class Main{
         String idPB = reader.nextLine();
         
         
-        if(controller.verifyBook(idPB)){
+        if(controller.verifyBook(idPB)||controller.verifyMagazine(idPB)){
 
             controller.buyOrSubscribe(ccUser, idPB);
             
+        }else{
+
+           System.out.println("Error"); 
         }
 
     }

@@ -812,24 +812,34 @@ public class Controller{
      * @param column The column position of the product in the user's list.
      * @return Returns the identified bibliographic product as a string.
      */
-    /** 
-    public String  identificarProducto(String ccUser, int fila, int columna){
+
+    public String identificarProducto(String ccUser, int fila, int columna) {
         String msg = "";
         User user = null;
-
+    
         for (User currentUser : listAllUsers) {
             if (currentUser.getCc().equals(ccUser)) {
                 user = currentUser;
-            }
-
-            if (user != null) {
-                // msg = user.getListOfBiblio()[fila][columna];
+                break; // Salir del bucle después de encontrar al usuario
             }
         }
     
-
+        if (user != null) {
+            BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
+          
+            BibliographicProducts product = listOfBiblio[fila][columna];
+            if (product != null) {
+                msg = product.getNameBP();
+            } else {
+                msg = "No hay producto en la posición especificada";
+            }
+        } else {
+            msg = "Usuario no encontrado";
+        }
+    
+        return msg;
     }
-    */
+    
 
     /**
      * Retrieves the number of pages of a bibliographic product.
@@ -837,8 +847,34 @@ public class Controller{
      * @param identificarProducto The identifier of the bibliographic product.
      * @return Returns the number of pages of the product.
      */
-    public int cantidadPaginas(String indentificarProducto){
+
+    public int cantidadPaginas(String ccUser, int fila, int columna) {
         int msg = 0;
+        User user = null;
+    
+        for (User currentUser : listAllUsers) {
+            if (currentUser.getCc().equals(ccUser)) {
+                user = currentUser;
+                break; // Salir del bucle después de encontrar al usuario
+            }
+        }
+    
+        if (user != null) {
+            BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
+            if (fila >= 0 && fila < listOfBiblio.length && columna >= 0 && columna < listOfBiblio[fila].length) {
+                BibliographicProducts product = listOfBiblio[fila][columna];
+                if (product != null) {
+                    msg = product.getNumPages();
+                } else {
+                    msg = -1; // Valor predeterminado para indicar que no hay producto en la posición especificada
+                }
+            } else {
+                msg = -1; // Valor predeterminado para indicar una posición inválida en la matriz de productos
+            }
+        } else {
+            msg = -1; // Valor predeterminado para indicar que no se encontró el usuario
+        }
+    
         return msg;
     }
 

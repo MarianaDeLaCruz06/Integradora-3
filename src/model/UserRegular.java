@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class UserRegular extends User{
@@ -8,12 +7,10 @@ public class UserRegular extends User{
 
     private BibliographicProducts[] listOfBiblioProducts = new BibliographicProducts[7];
     private Bill[] listAllBills = new Bill[7];
-    private String[][] products;
     
 
     public UserRegular(String name, String cc, Calendar date) {
         super(name, cc, date);
-        products = new String[5][5];
 
     }
     
@@ -34,13 +31,7 @@ public class UserRegular extends User{
         return acumReadB;
     }
 
-    public void setProducts(String[][] products) {
-        this.products = products;
-    }
 
-    public String[][] getProductos() {
-        return products;
-    }
             
     /**
      * Calculates the total number of pages read in magazines by the user.
@@ -93,6 +84,7 @@ public class UserRegular extends User{
                     Book boughtBook = new Book((Book) productToBuyB);
                     listOfBiblioProducts[i] = boughtBook;
                     (boughtBook).buy();
+                    initMatrix();
                     return true;
                 }
             }
@@ -132,6 +124,7 @@ public class UserRegular extends User{
                     Magazine boughtMagazine = new Magazine((Magazine) productToSubscribeM);
                     listOfBiblioProducts[i] = boughtMagazine;
                     (boughtMagazine).buy();
+                    initMatrix();
                     return true;
                 }
             }
@@ -211,9 +204,11 @@ public class UserRegular extends User{
         return false; // No se encontró la suscripción con ese idBP
     }   
 
+
     public void insertionSort(){
         for (int i = 1; i < listOfBiblioProducts.length; i ++){
             for (int j = 0; j < i; j++) {
+                if(listOfBiblioProducts[i] != null && listOfBiblioProducts != null)
                 if (listOfBiblioProducts[i].getPublicateDate().compareTo(listOfBiblioProducts[j].getPublicateDate()) < 0) {
                     BibliographicProducts temp = listOfBiblioProducts[i];
                     listOfBiblioProducts[i] = listOfBiblioProducts[j];
@@ -246,7 +241,6 @@ public class UserRegular extends User{
         setListOfBiblio(matrix);
 
     }
-
     
     @Override
     public String getProducts(){

@@ -554,7 +554,6 @@ public class Main{
         }
     }
 
-// falta
     public void simulateReadingSession() {
 
         System.out.println("* * * * * * * * * * * *");
@@ -569,29 +568,23 @@ public class Main{
         System.out.println("Enter the ID number of the user you want");
         String ccUser = reader.nextLine();
 
-        String view2 = controller.getProducts();
+        String view2 = controller.viewLibrary(ccUser);
         System.out.println(view2);
-
-        System.out.println("Enter the ID number of the book or magazine you want");
-        String idBP = reader.nextLine();
-
-        controller.viewLibrary(ccUser);
         
-        System.out.println("Digite la fila");
-        int fila= reader.nextInt();
-        System.out.println("Digite la columna");
-        int columna = reader.nextInt();
+        System.out.println("Digite la fila del libro o revista que desea leer");
+        int row= reader.nextInt();
+        System.out.println("Digite la columna del libro o revista que desea leer");
+        int column = reader.nextInt();
 
-        // String identificarProducto = controller.identificarProducto(ccUser, fila, columna);
-        // int cantidadPaginas = controller.cantidadPaginas(identificarProducto);
-        // String nombre = controller.nombreProductoBibliografico(identificarProducto);
-
+        String identifyProduct = controller.identifyProduct(ccUser, row, column);
+        int cantPages = controller.cantPages(ccUser, row, column);
         
         boolean reading = true;
+        int currentPage = 1;
 
         while (reading) {
-            //System.out.println("Product: " + nombre);
-            //System.out.println("Current page: " + cantidadPaginas);
+            System.out.println("Product: " + identifyProduct);
+            System.out.println("Current page: " + currentPage + " of " + cantPages);
             System.out.println("Navigation options:");
             System.out.println("1. Read previous page");
             System.out.println("2. Read next page");
@@ -599,7 +592,7 @@ public class Main{
             
             System.out.print("Select an option: ");
             int option = reader.nextInt();
-            int currentPage=0;
+            
             
             switch (option) {
                 case 1:
@@ -611,7 +604,6 @@ public class Main{
                     }
                     break;
                 case 2:
-                    // Aquí podrías implementar la lógica para verificar si la página siguiente existe
                     currentPage++;
                     System.out.println("You have moved on to the next page.");
                     break;

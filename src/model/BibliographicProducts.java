@@ -92,7 +92,6 @@ public abstract class BibliographicProducts implements Comparable<BibliographicP
 
     @Override
     public int compareTo(BibliographicProducts o) {
-        
         return this.getPublicateDate().compareTo(o.getPublicateDate());
     }
 

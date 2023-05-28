@@ -20,6 +20,11 @@ public class Book extends BibliographicProducts implements Buyable{
         
     }
 
+    /**
+     * This method is the copy of the constructor
+     * @param bookToCopy
+     */
+
     public Book(Book bookToCopy){ 
         super(bookToCopy.getId(), bookToCopy.getNameBP(), bookToCopy.getNumPages(), bookToCopy.getPublicateDate(), bookToCopy.getURL(), bookToCopy.getAcumReadPages());
 
@@ -61,6 +66,10 @@ public class Book extends BibliographicProducts implements Buyable{
     public void setNumCopies(int numCopies) {
         this.numCopies = numCopies;
     }
+
+    /**
+     * intefase
+     */
 
     @Override
     public void buy() {

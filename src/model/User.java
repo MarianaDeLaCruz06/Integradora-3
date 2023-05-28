@@ -10,6 +10,8 @@ public abstract class User {
     private String cc;
     private Calendar date;
     private ArrayList<BibliographicProducts[][]> listAllBiblio;
+    private BibliographicProducts[][] listOfBiblio = new BibliographicProducts[5][5];
+
 
     private SimpleDateFormat simpleDateFormat;
     private DateFormat formatteDate;
@@ -64,18 +66,80 @@ public abstract class User {
         this.listAllBiblio = listAllBiblio;
     }
 
+    public BibliographicProducts[][] getListOfBiblio() {
+        return listOfBiblio;
+    }
+
+    public void setListOfBiblio(BibliographicProducts[][] listOfBiblio) {
+        this.listOfBiblio = listOfBiblio;
+    }
+
+    /**
+     * Buys a book product.
+     *
+     * @param productToBuyB The book product to buy.
+     * @return True if the purchase is successful, false otherwise.
+     */
     public abstract boolean buyBook(Buyable productToBuyB);
 
+    /**
+     * Subscribes to a magazine product.
+     *
+     * @param productToSubscribeM The magazine product to subscribe to.
+     * @return True if the subscription is successful, false otherwise.
+     */
     public abstract boolean subscribeMagazine(Buyable productToSubscribeM);
 
+    /**
+     * This method returns a string representation of the user's products.
+     *
+     * @return A string representation of the user's products.
+     */
     public abstract String getProducts();
     
+     /**
+     * This method calculates the total number of pages read in books by the user.
+     *
+     * @return The total number of pages read in books.
+     */
     public abstract int sumNumPagesBook();
+
+    /**
+     * This method calculates the total number of pages read in magazines by the user.
+     *
+     * @return The total number of pages read in magazines.
+     */
     public abstract int sumNumPagesMagazine();
 
+    /**
+     * Displays information about the user's subscribed magazines.
+     *
+     * @return A string representation of the user's subscribed magazines.
+     */
     public abstract String showMagazine();
 
+    /**
+     * Cancels the subscription to a magazine.
+     *
+     * @param idBP The ID of the bibliographic product to cancel the subscription.
+     * @return True if the cancellation is successful, false otherwise.
+     */
     public abstract boolean cancelSubscription(String idBP);
+
+    /**
+     * This method returns the most read book genre by the user.
+     *
+     * @return The most read book genre.
+     */
+    public abstract TypeBook getMostReadBookGenre();
+
+    /**
+     * This method the most read magazine category by the user.
+     *
+     * @return The most read magazine category.
+     */
+    public abstract TypeMagazine getMostReadMagazineCategory();
+        
 
     public String toString() {
         String msg = "";
@@ -91,6 +155,8 @@ public abstract class User {
         String formatDate = simpleDateFormat.format(date.getTime());
         return formatDate;
     }
+
+
 
     
 }

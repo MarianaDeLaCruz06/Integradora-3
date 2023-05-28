@@ -20,6 +20,11 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.numSubscription = numSubscription;
     }
 
+    /**
+     * This method is the copy of the constructor 
+     * @param magazineToCopy
+     */
+
     public Magazine(Magazine magazineToCopy){ 
         super(magazineToCopy.getId(), magazineToCopy.getNameBP(), magazineToCopy.getNumPages(), magazineToCopy.getPublicateDate(), magazineToCopy.getURL(), magazineToCopy.getAcumReadPages());
 
@@ -63,7 +68,9 @@ public class Magazine extends BibliographicProducts implements Buyable{
         this.numSubscription = numSubscription;
     }
 
-
+    /**
+     * intefase
+     */
     @Override
     public void buy() {
         setNumSubscription(getNumSubscription()+1);

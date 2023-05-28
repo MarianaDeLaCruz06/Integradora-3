@@ -3,6 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import org.w3c.dom.UserDataHandler;
+
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.text.SimpleDateFormat;
 
 public class Controller{
@@ -19,6 +23,9 @@ public class Controller{
         testCase();
     }
 
+    /**
+     * This method is to help me to buy something and it would not be necessary to register a product or a user.
+     */
     public void testCase(){
         Calendar date = Calendar.getInstance();
         User usertest = new UserRegular("Jose Ramirez", "1234567", date);
@@ -27,13 +34,22 @@ public class Controller{
         listAllUsers.add(usertest);
         listAllUsers.add(usertest2);
 
-        Book book = new Book("12345678", "Caperucita Roja", 128, date, "caperucita.com", 20,"Es un libro infantil con una buena moraleja", TypeBook.HISTORICAL_NOVEL, 10.000, 2);
-        Magazine magazine = new Magazine("34567890", "Amimales en Extincion", 30, date, "animal.com", 10, TypeMagazine.VARIETIES, 8.000, "media",  1);
+        Book book = new Book("12A", "Caperucita Roja", 128, date, "caperucita.com", 20,"Es un libro infantil con una buena moraleja", TypeBook.HISTORICAL_NOVEL, 10.000, 2);
+        Magazine magazine = new Magazine("34B", "Amimales en Extincion", 30, date, "animal.com", 10, TypeMagazine.VARIETIES, 8.000, "media",  1);
     
         listAllBibliographicProducts.add(book);
         listAllBibliographicProducts.add(magazine);
     }
 
+    /**
+     * This method is used to create a user.
+     *
+     * @param userType  The type of the user (regular or premium).
+     * @param name      The name of the user.
+     * @param cc        The credit card number of the user.
+     * @param date      The date of user creation (Calendar or Instant).
+     * @return          Returns false if the user could not be created.
+     */
     public boolean createUser(int userType, String name, String cc, Calendar date){
         
         switch(userType){
@@ -48,6 +64,23 @@ public class Controller{
         return false;
     }
 
+    /**
+     * This method is used to create a new book.
+     *
+     * @param id            The ID of the book.
+     * @param nameBP        The name of the book.
+     * @param numPages      The number of pages in the book.
+     * @param dayB          The day of publication.
+     * @param monthB        The month of publication.
+     * @param yearB         The year of publication.
+     * @param URL           The URL of the book.
+     * @param acumReadPages The accumulated number of pages read.
+     * @param reviewShort   The short review of the book.
+     * @param genderIndex   The index of the book's gender (SCIENCE_FICTION, FANTASY, HISTORICAL_NOVEL).
+     * @param sellingValue  The selling value of the book.
+     * @param numCopies     The number of copies of the book.
+     * @return              Returns true if the book was successfully registered, false otherwise.
+     */
     public boolean registerBook(String id, String nameBP, int numPages, int dayB, int monthB, int yearB, String URL, int acumReadPages, String reviewShort, int genderIndex, double sellingValue, int numCopies){
 
        TypeBook gender = TypeBook.values()[genderIndex-1];
@@ -58,6 +91,23 @@ public class Controller{
         
     }
 
+    /**
+     * This method is used to create a new magazine.
+     *
+     * @param id                The ID of the magazine.
+     * @param nameBP            The name of the magazine.
+     * @param numPages          The number of pages in the magazine.
+     * @param dayM              The day of publication.
+     * @param monthM            The month of publication.
+     * @param yearM             The year of publication.
+     * @param URL               The URL of the magazine.
+     * @param acumReadPages     The accumulated number of pages read.
+     * @param categoryIndex     The index of the magazine category.
+     * @param valueSuscription  The value of the magazine subscription.
+     * @param emissionPeriod    The emission period of the magazine.
+     * @param numSuscription    The number of subscriptions for the magazine.
+     * @return                  Returns true if the magazine was successfully registered, false otherwise.
+     */
     public boolean registerMagazine(String id, String nameBP, int numPages, int dayM, int monthM, int yearM, String URL, int acumReadPages, int categoryIndex, double valueSuscription, String emissionPeriod, int numSuscription){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndex-1];
@@ -68,7 +118,24 @@ public class Controller{
 
     }
 
-    
+    /**
+     * This method modifies the book completely
+     *
+     * @param optionModify         The option to modify.
+     * @param idBModify            The ID of the book to modify.
+     * @param nameBPModify         The modified name of the book.
+     * @param numPagesModify       The modified number of pages in the book.
+     * @param dayBModify           The modified day of publication.
+     * @param monthBModify         The modified month of publication.
+     * @param yearBModify          The modified year of publication.
+     * @param URLModify            The modified URL of the book.
+     * @param acumReadPagesModify  The modified accumulated number of pages read.
+     * @param reviewShortModify    The modified short review of the book.
+     * @param genderIndexModify    The modified index of the book's gender (SCIENCE_FICTION, FANTASY, HISTORICAL_NOVEL).
+     * @param sellingValueModify   The modified selling value of the book.
+     * @param numCopiesModify      The modified number of copies of the book.
+     * @return                     Returns true if the book was successfully modified.
+     */
     public boolean modifyBook(int optionModify, String idBModify, String nameBPModify, int numPagesModify, int dayBModify, int monthBModify, int yearBModify, String URLModify, int acumReadPagesModify, String reviewShortModify, int genderIndexModify, double sellingValueModify, int numCopiesModify){
         
         TypeBook gender = TypeBook.values()[genderIndexModify-1];
@@ -97,6 +164,24 @@ public class Controller{
         return true; 
     }
 
+    /**
+     * This method modifies the magazine completely
+     *
+     * @param optionMModify           The option to modify.
+     * @param idMModify               The ID of the magazine to modify.
+     * @param namePBModify            The modified name of the magazine.
+     * @param numPagesModify          The modified number of pages in the magazine.
+     * @param dayMModify              The modified day of publication.
+     * @param monthMModify            The modified month of publication.
+     * @param yearMModify             The modified year of publication.
+     * @param URLModify               The modified URL of the magazine.
+     * @param acumReadPagesModify     The modified accumulated number of pages read.
+     * @param categoryIndexModify     The modified index of the magazine category.
+     * @param valueSubscriptionModify The modified value of the magazine subscription.
+     * @param emissionPeriodModify    The modified emission period of the magazine.
+     * @param numSubscriptionModify   The modified number of subscriptions for the magazine.
+     * @return                        Returns true if the magazine was successfully modified.
+     */
     public boolean modifyMagazine(int optionMModify, String idMModify, String namePBModify, int numPagesModify, int dayMModify, int monthMModify, int yearMModify, String URLModify, int acumReadPagesModify, int categoryIndexModify, double valueSubscriptionModify, String emissionPeriodModify, int numSubscriptionModify){
 
         TypeMagazine category = TypeMagazine.values()[categoryIndexModify-1];
@@ -127,6 +212,12 @@ public class Controller{
         return true;
     }
 
+    /**
+     * This method delete a book with the specified ID.
+     *
+     * @param idB  The ID of the book to delete.
+     * @return     Returns true if the book was successfully deleted, false otherwise.
+     */
     public boolean deleteBook(String idB) {
         // Recorrer la lista de libros
         for (BibliographicProducts book : listAllBibliographicProducts) {
@@ -141,6 +232,12 @@ public class Controller{
         return false;
     }
 
+    /**
+     * This method delete a magazine with the specified ID.
+     *
+     * @param idM  The ID of the magazine to delete.
+     * @return     Returns true if the magazine was successfully deleted, false otherwise.
+     */
     public boolean deleteMagazine(String idM) {
 
         for (BibliographicProducts magazine : listAllBibliographicProducts) {
@@ -154,6 +251,12 @@ public class Controller{
         return false;
     }
 
+    /**
+     * This method allows the user with his ID to buy a book or subscribe to a magazine.
+     *
+     * @param ccUser  The ID number of the user.
+     * @param idBP    The ID of the bibliographic product to buy or subscribe to.
+     */
     public void buyOrSubscribe(String ccUser, String idBP){
 
        // boolean wasBuy = false;
@@ -214,45 +317,36 @@ public class Controller{
         }
     }
 
-    public void ViewSubscribeMagazine(String ccUser) {
-        
-    }
-
     /**
-    public String viewLibrary(String ccUser){
+     * This method retrieves the list of products in the user's library.
+     *
+     * @param ccUser  The ID number of the user.
+     * @return        Returns a string representation of the user's library.
+     */
+    public String viewLibrary(String ccUser) {
         String msg = "";
-        msg = ((UserPremium)listAllUsers.getCc().equals(ccUser)).getProducts();
-        return msg;
-    }
-    */
-     
-    public boolean viewLibrary(String ccUser) {
-        boolean libraryViewed = false;
-    
-        for (User user : listAllUsers) {
-            if (user.getCc().equals(ccUser)) {
-                
-                if (user instanceof UserPremium) {
-                    UserPremium premiumUser = (UserPremium) user;
-                    String products = premiumUser.getProducts();
-                    if (products != null && !products.equals("")) {
-                        libraryViewed = true;
-                    }
-                }else if(user instanceof UserRegular){
-                    UserRegular regularUser = (UserRegular) user;
-                    String products = regularUser.getProducts();
-                    if (products != null && !products.equals("")) {
-                        libraryViewed = true;
-                    }
-                }
-
-                break;
+        User user = null;
+        
+        for (User currentUser : listAllUsers) {
+            if (currentUser.getCc().equals(ccUser)) {
+                user = currentUser;
             }
+         
+        }
+
+        if (user != null) {
+            msg = user.getProducts();
         }
     
-        return libraryViewed;
+        return msg;
     }
-
+    
+    /**
+     * This method retrieves the list of subscribed magazines for a user.
+     *
+     * @param ccUser The ID number of the user.
+     * @return Returns a string representation of the user's subscribed magazines.
+     */
     public String viewMagazineSubscribe(String ccUser) {
         String msg = "";
         User user = null;
@@ -270,6 +364,13 @@ public class Controller{
         return msg;
     }
 
+    /**
+     * This method allows the user to cancel the subscription to a magazine
+     *
+     * @param ccUser The ID number of the user.
+     * @param idBP   The ID of the bibliographic product to cancel the subscription for.
+     * @return Returns true if the subscription was successfully canceled, false otherwise.
+     */
     public boolean cancelSubs(String ccUser, String idBP) {
         boolean indication = false;
         User user = null;
@@ -286,28 +387,12 @@ public class Controller{
     
         return indication;
     }
-    
-    
-    
-    public String libraryUser(String ccUser){
-        String msg = "";
-        User user;
-        
-        if(typeUser(ccUser)){
-            
-            System.out.println("The user is Regular");
-            msg = getProducts();
-        } else {
 
-            System.out.println("The user is Premium");
-            msg = getProducts();
-        }
-        
-        return msg;
-    }
-    
-
-
+    /**
+     * Retrieves the list of all bibliographic products.
+     *
+     * @return Returns a string representation of all bibliographic products.
+     */
     public String getProducts(){
         String msg = "";
 
@@ -320,7 +405,11 @@ public class Controller{
         return msg;
     }
 
-
+    /**
+     * Retrieves the list of books among all bibliographic products.
+     *
+     * @return Returns a string representation of all books.
+     */
     public String getBPBook(){
 
         String msg = "";
@@ -337,6 +426,11 @@ public class Controller{
         return msg;
     }
 
+    /**
+     * Retrieves the list of magazines among all bibliographic products.
+     *
+     * @return Returns a string representation of all magazines.
+     */
     public String getBPMagazine(){
 
         String msg = "";
@@ -353,6 +447,11 @@ public class Controller{
         return msg;
     }
 
+    /**
+     * Retrieves the list of all users.
+     *
+     * @return Returns a string representation of all users.
+     */
     public String getUsers(){
         String msg = "";
 
@@ -365,6 +464,11 @@ public class Controller{
         return msg;
     }
 
+    /**
+     * Retrieves the list of regular users among all users.
+     *
+     * @return Returns a string representation of all regular users.
+     */
     public String getUsersRegular(){
         String msg = "";
 
@@ -377,6 +481,11 @@ public class Controller{
         return msg;
     }
 
+    /**
+     * Retrieves the list of premium users among all users.
+     *
+     * @return Returns a string representation of all premium users.
+     */
     public String getUsersPremium(){
         String msg = "";
 
@@ -389,13 +498,26 @@ public class Controller{
         return msg;
     }
 
-
+    /**
+     * Creates a calendar object with the specified day, month, and year.
+     *
+     * @param day   The day.
+     * @param month The month.
+     * @param year  The year.
+     * @return Returns a Calendar object representing the specified date.
+     */
     public Calendar createDate(int day, int month, int year){
 		Calendar date = new GregorianCalendar(year,month-1,day);
         return date;
 	}
 
 
+    /**
+     * Verifies if a bibliographic product is a book.
+     *
+     * @param idBP The ID of the bibliographic product.
+     * @return Returns true if the bibliographic product is a book, false otherwise.
+     */
     public boolean verifyBook(String idBP){
         boolean isABook = false;
         BibliographicProducts product =getBibliographicProduct(idBP);
@@ -407,6 +529,12 @@ public class Controller{
         return isABook;
     }
 
+    /**
+     * Verifies if a bibliographic product is a magazine.
+     *
+     * @param idBP The ID of the bibliographic product.
+     * @return Returns true if the bibliographic product is a magazine, false otherwise.
+     */
     public boolean verifyMagazine(String idBP){
         boolean isAMagazine = false;
         BibliographicProducts product =getBibliographicProduct(idBP);
@@ -419,21 +547,26 @@ public class Controller{
     }
 
 
-
+    /**
+     * Retrieves a bibliographic product by its ID.
+     *
+     * @param idBP The ID of the bibliographic product.
+     * @return Returns the bibliographic product matching the specified ID, or null if not found.
+     */
     public BibliographicProducts getBibliographicProduct(String idBP){
         BibliographicProducts product = null;
         boolean found =false;
-        System.out.println("El codigo que llega: "+ idBP);
+        //System.out.println("El codigo que llega: "+ idBP);
 
         for(int i=0; i<listAllBibliographicProducts.size()&&!found;i++){
 
-            System.out.println("Codigo en lista: "+listAllBibliographicProducts.get(i).getId());
+            //System.out.println("Codigo en lista: "+listAllBibliographicProducts.get(i).getId());
 
             if(listAllBibliographicProducts.get(i).getId().equalsIgnoreCase(idBP)){
 
                 found = true;
 
-                System.out.println("Entra aca");
+                //System.out.println("Entra aca");
                 return listAllBibliographicProducts.get(i);
             }
         }
@@ -441,6 +574,12 @@ public class Controller{
     }
     
 
+    /**
+     * Searches for a user by their credit card number.
+     *
+     * @param ccUser The ID number of the user.
+     * @return Returns the index of the user in the user list, or -1 if not found.
+     */
     public int searchUser(String ccUser) {
        int pos = -1;
        for (int i = 0; i < listAllUsers.size(); i++) {
@@ -451,6 +590,12 @@ public class Controller{
        return pos;
     }
 
+    /**
+     * Determines the type of user based on their credit card number.
+     *
+     * @param ccUser The ID number of the user.
+     * @return Returns true if the user is a regular user, false if the user is a premium user or not found.
+     */
     public boolean typeUser(String ccUser) {
         for (User user : listAllUsers) {
             if (user.getCc().equals(ccUser)) {
@@ -465,6 +610,12 @@ public class Controller{
         return false; // User not found
     }
 
+    /**
+     * Determines the type of bibliographic product based on its ID.
+     *
+     * @param idBP The ID of the bibliographic product.
+     * @return Returns true if the bibliographic product is a book, false if it's a magazine or not found.
+     */
     public boolean typeProducts(String idBP) {
         for (BibliographicProducts products: listAllBibliographicProducts) {
             if (products.getId().equals(idBP)) {
@@ -479,9 +630,12 @@ public class Controller{
         return false; // User not found
     }
 
-    
-    
-
+    /**
+     * Searches for a bibliographic product by its ID.
+     *
+     * @param idProduct The ID of the bibliographic product.
+     * @return Returns the index of the product in the list of all bibliographic products, or -1 if not found.
+     */
     public int searchBP(String idProduct) {
         int pos = -1;
         for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
@@ -492,7 +646,11 @@ public class Controller{
         return pos;
     }
 
-
+    /**
+     * Calculates the total number of pages read in books by all users.
+     *
+     * @return Returns the total number of pages read in books.
+     */
     public int numPagesReadBook() {
         int acumReadB = 0;
 
@@ -502,7 +660,11 @@ public class Controller{
 
         return acumReadB;
     }
-
+    /**
+     * Calculates the total number of pages read in magazines by all users.
+     *
+     * @return Returns the total number of pages read in magazines.
+     */
     public int numPagesReadMagazine() {
         int acumReadB = 0;
 
@@ -512,10 +674,183 @@ public class Controller{
 
         return acumReadB;
     }
+    
+    /**
+     * Displays the most read genres for books and categories for magazines by users.
+     * It shows the most read book genre, the number of pages read for books,
+     * the most read magazine category, and the number of pages read for magazines.
+     */
+    public void showMostReadGenresAndCategories() {
+        for (User user : listAllUsers) {
+            TypeBook mostReadBookGenre = user.getMostReadBookGenre();
+            TypeMagazine mostReadMagazineCategory = user.getMostReadMagazineCategory();
+            int numPagesReadB = user.sumNumPagesBook();
+            int numPagesReadM = user.sumNumPagesMagazine();
+            
+            System.out.println("Most Read Book Genre: " + mostReadBookGenre);
+            System.out.println("Number of Pages Read of the book: " + numPagesReadB);
+            System.out.println("Most Read Magazine Category: " + mostReadMagazineCategory);
+            System.out.println("Number of Pages Read of the Magazine: " + numPagesReadM);
+            System.out.println("-----------------------------------");
+            break;
+        }
+        
+    }
 
+    /**
+     * Calculates the number of books sold and their total value by genre.
+     *
+     * @return Returns a formatted message containing the number of books sold and their total value by genre.
+     */
+    public String sellingBooks() {
+
+        String msg = "";
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        double value = 0;
+
+        for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
+            if (listAllBibliographicProducts.get(i) instanceof Book) {
+
+                TypeBook genreB  = ((Book) (listAllBibliographicProducts.get(i))).getGender();
+
+                if (genreB == TypeBook.FANTASY) {
+                    cont1++;
+                    value += ((Book) listAllBibliographicProducts.get(i)).getSellingValue() * ((Book) listAllBibliographicProducts.get(i)).getNumCopies();
+                }
+                if (genreB == TypeBook.HISTORICAL_NOVEL) {
+                    cont2++;
+                    value += ((Book) listAllBibliographicProducts.get(i)).getSellingValue() * ((Book) listAllBibliographicProducts.get(i)).getNumCopies();
+                }
+                if (genreB == TypeBook.SCIENCE_FICTION) {
+                    cont3++;
+                    value += ((Book) listAllBibliographicProducts.get(i)).getSellingValue() * ((Book) listAllBibliographicProducts.get(i)).getNumCopies();
+                }
+
+            }
+
+        }
+        msg += "\nThe number of books sold in the: ";
+        msg += "\nFantasy " + cont1 ;
+        msg += "\nHistorical Novel " + cont2 ;
+        msg += "\nScience Fiction " + cont3 ;
+
+        msg += "\n\nThe value total : ";
+        msg += "\nFantasy " + value;
+        msg += "\nHistorical Novel " + value;
+        msg += "\nScience Fiction " + value;
+
+
+        return msg;
+    }
+
+    /**
+     * Calculates the number of active subscriptions and their total value by magazine category.
+     *
+     * @return Returns a formatted message containing the number of active subscriptions and their total value by category.
+     */
+    public String numSubsActiveValueTotal(){
+
+        String msg = "";
+
+        int cont1 = 0;
+        int cont2 = 0;
+        int cont3 = 0;
+        double value = 0;
+
+        for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
+            if (listAllBibliographicProducts.get(i) instanceof Magazine) {
+
+                TypeMagazine categoryM = ((Magazine) (listAllBibliographicProducts.get(i))).getCategory();
+
+                if (categoryM == TypeMagazine.DESIGN) {
+                    cont1++;
+                    value += ((Magazine) listAllBibliographicProducts.get(i)).getValueSubscription() * ((Magazine) listAllBibliographicProducts.get(i)).getNumSubscription();
+                }
+                if (categoryM == TypeMagazine.SCIENTIFIC) {
+                    cont2++;
+                    value += ((Magazine) listAllBibliographicProducts.get(i)).getValueSubscription() * ((Magazine) listAllBibliographicProducts.get(i)).getNumSubscription();
+                }
+                if (categoryM == TypeMagazine.VARIETIES) {
+                    cont3++;
+                    value += ((Magazine) listAllBibliographicProducts.get(i)).getValueSubscription() * ((Magazine) listAllBibliographicProducts.get(i)).getNumSubscription();
+                }
+
+            }
+
+        }
+
+        msg += "\nThe number of books sold in the: ";
+        msg += "\nDesing " + cont1 ;
+        msg += "\nScientific " + cont2 ;
+        msg += "\nVarieties " + cont3 ;
+
+        msg += "\n\nThe value total: ";
+        msg += "\nDesing " + value;
+        msg += "\nScientific " + value;
+        msg += "\nVarieties " + value;
+        return msg;
+    }
+
+    /**
+     * Converts a Calendar object to a formatted date string.
+     *
+     * @param date The Calendar object representing the date.
+     * @return Returns the formatted date string.
+     */
     public String changeFormat(Calendar date){
         String formatDate = simpleDateFormat.format(date.getTime());
         return formatDate;
+    }
+
+    /**
+     * Identifies a bibliographic product by its position in a user's list.
+     *
+     * @param ccUser The credit card number of the user.
+     * @param row    The row position of the product in the user's list.
+     * @param column The column position of the product in the user's list.
+     * @return Returns the identified bibliographic product as a string.
+     */
+    /** 
+    public String  identificarProducto(String ccUser, int fila, int columna){
+        String msg = "";
+        User user = null;
+
+        for (User currentUser : listAllUsers) {
+            if (currentUser.getCc().equals(ccUser)) {
+                user = currentUser;
+            }
+
+            if (user != null) {
+                // msg = user.getListOfBiblio()[fila][columna];
+            }
+        }
+    
+
+    }
+    */
+
+    /**
+     * Retrieves the number of pages of a bibliographic product.
+     *
+     * @param identificarProducto The identifier of the bibliographic product.
+     * @return Returns the number of pages of the product.
+     */
+    public int cantidadPaginas(String indentificarProducto){
+        int msg = 0;
+        return msg;
+    }
+
+    /**
+     * Retrieves the name of a bibliographic product.
+     *
+     * @param identificarProducto The identifier of the bibliographic product.
+     * @return Returns the name of the product.
+     */
+    public String nombreProductoBibliografico(String identificarProducto){
+        String msg = "";
+        return msg;
     }
 
 }

@@ -128,9 +128,9 @@ public class Main{
                     case 1:
                         reportAcumReadPages();
                     break;
-
-                    case 2:
                         
+                    case 2:
+                        controller.showMostReadGenresAndCategories();
                     break;
 
                     case 3:
@@ -138,12 +138,13 @@ public class Main{
                     break;
 
                     case 4:
-                        
+                        sellingBooks();
                     break;
 
                     case 5:
-                        
+                        numSubsActiveValueTotal();
                     break;
+
                     default:
                         break;
                    }
@@ -496,6 +497,13 @@ public class Main{
 
         reader.nextLine();
 
+        System.out.println("* * * * * * * * * * * * * * * * * * * * *");
+        System.out.println("* - Magazine subscription cancellation  *");
+        System.out.println("* * * * * * * * * * * * * * * * * * * * *");
+
+        String view2 = controller.getUsers();
+        System.out.println(view2);
+
         System.out.println("Write the id of the person");
         String ccUser = reader.nextLine();
 
@@ -516,16 +524,18 @@ public class Main{
 
     public void viewLibrary() {
 
+        reader.nextLine();
+
         System.out.println("* * * * * * * * *");
         System.out.println("*  Your library *");
         System.out.println("* * * * * * * * *");
-        
-    
-        System.out.println("1. Regular");
+
         String view = controller.getUsersRegular();
-        System.out.println(view);
-        System.out.println("2. Premium");
         String view2 = controller.getUsersPremium();
+
+        System.out.println("Regular");
+        System.out.println(view);
+        System.out.println("Premium");
         System.out.println(view2);
 
         System.out.println("Put the ID of the user you want to select?");
@@ -537,13 +547,14 @@ public class Main{
             System.out.println("The user you selected is Premium");
         }
     
-        if (controller.viewLibrary(ccUser)) {
-            System.out.println("Library viewed successfully.");
+        if (controller.viewLibrary(ccUser) != null) {
+            System.out.println(controller.viewLibrary(ccUser));
         } else {
             System.out.println("Failed to view the library.");
         }
     }
 
+// falta
     public void simulateReadingSession() {
 
         System.out.println("* * * * * * * * * * * *");
@@ -564,17 +575,23 @@ public class Main{
         System.out.println("Enter the ID number of the book or magazine you want");
         String idBP = reader.nextLine();
 
-        controller.libraryUser(ccUser);
+        controller.viewLibrary(ccUser);
         
-        // Obtener el producto bibliográfico y la página actual de alguna manera
-        String productName = "Caperucita Roja";
-        int currentPage = 1;
+        System.out.println("Digite la fila");
+        int fila= reader.nextInt();
+        System.out.println("Digite la columna");
+        int columna = reader.nextInt();
+
+        // String identificarProducto = controller.identificarProducto(ccUser, fila, columna);
+        // int cantidadPaginas = controller.cantidadPaginas(identificarProducto);
+        // String nombre = controller.nombreProductoBibliografico(identificarProducto);
+
         
         boolean reading = true;
 
         while (reading) {
-            System.out.println("Product: " + productName);
-            System.out.println("Current page: " + currentPage);
+            //System.out.println("Product: " + nombre);
+            //System.out.println("Current page: " + cantidadPaginas);
             System.out.println("Navigation options:");
             System.out.println("1. Read previous page");
             System.out.println("2. Read next page");
@@ -582,6 +599,7 @@ public class Main{
             
             System.out.print("Select an option: ");
             int option = reader.nextInt();
+            int currentPage=0;
             
             switch (option) {
                 case 1:
@@ -611,6 +629,11 @@ public class Main{
     }
 
     public void reportAcumReadPages() {
+
+        System.out.println("* * * * * * * * * * * * * * *");
+        System.out.println("* Reading simulation report *");
+        System.out.println("* * * * * * * * * * * * * * *");
+        
         System.out.println("1. Book");
         System.out.println("2. Magazine");
         int optionARP = reader.nextInt();
@@ -631,5 +654,15 @@ public class Main{
             break;
         }
 
+    }
+
+    public void sellingBooks() {
+        System.out.println(controller.sellingBooks());
+    }
+
+
+
+    public void numSubsActiveValueTotal(){
+        System.out.println(controller.numSubsActiveValueTotal());
     }
 }

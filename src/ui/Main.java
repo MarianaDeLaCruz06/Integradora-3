@@ -95,7 +95,6 @@ public class Main{
     
                     System.out.println(controller.getUsers());
                     System.out.println(controller.getProducts());
-                    System.out.println();
 
                 break;
                     
@@ -172,10 +171,10 @@ public class Main{
 
         int userType = reader.nextInt();
 
+        reader.nextLine(); // Limpieza de buffer
+
         System.out.println("Enter the name");
         String name = reader.nextLine();
-
-        reader.nextLine(); // Limpieza de buffer
 
         System.out.println("Enter de cc");
         String cc = reader.nextLine();
@@ -387,6 +386,7 @@ public class Main{
             String URLMModify = reader.nextLine();
          
             int acumReadPagesMModify = 0;
+
 
             System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
             int categoryIndexModify = reader.nextInt();

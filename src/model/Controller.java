@@ -447,7 +447,7 @@ public class Controller{
 
         for(int i=0; i<listAllUsers.size();i++){
 
-            msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+" - "+listAllUsers.get(i).getName();
+            msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+ " - " +listAllUsers.get(i).getName();
 
         }
         
@@ -481,7 +481,7 @@ public class Controller{
 
         for(int i=0; i<listAllUsers.size();i++){
             if(listAllUsers.get(i) instanceof UserPremium){
-             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getCc()+" - "+listAllUsers.get(i).getName();
+             msg += "\n" + (i+1) +". "+ listAllUsers.get(i).getName() +" - "+ listAllUsers.get(i).getCc();
             }
         }
         

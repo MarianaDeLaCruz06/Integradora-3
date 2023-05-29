@@ -268,6 +268,9 @@ public class Main{
         int categoryIndex = reader.nextInt();
         System.out.println("Enter the value of subscription:");
         double valueSubscription = reader.nextDouble();
+
+        reader.nextLine();
+
         System.out.println("Enter the emission period:");
         String emissionPeriod = reader.nextLine();
         
@@ -357,9 +360,9 @@ public class Main{
         }else{
             System.out.println(view);
 
-            System.out.println("* * * * * * * * * * * * * *");
-            System.out.println("*  Modify a new magazine  *");
-            System.out.println("* * * * * * * * * * * * * *");
+            System.out.println("* * * * * * * * * * * *");
+            System.out.println("*  Modify a magazine  *");
+            System.out.println("* * * * * * * * * * * *");
 
             System.out.println("Select the magazine you werw saying to modify");
             int optionMModify = reader.nextInt();

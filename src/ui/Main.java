@@ -239,8 +239,6 @@ public class Main{
 
     public void registerMagazine(){
 
-        reader.nextLine();
-
         System.out.println("* * * * * * * * * * * * * * *");
         System.out.println("*  Register a new magazine  *");
         System.out.println("* * * * * * * * * * * * * * *");
@@ -326,7 +324,7 @@ public class Main{
 
             System.out.println("Enter the URL:");
             String URLBModify = reader.next();
-            System.out.println("Enter the URL:");
+            System.out.println("Enter the accumulated read pages:");
             int acumReadPagesBModify = reader.nextInt();
             System.out.println("Enter the review:");
             String reviewShortModify = reader.next();

@@ -427,7 +427,7 @@ public class Main{
             System.out.println("* * * * * * * * * *");
             System.out.println("*  Delete a Book  *");
             System.out.println("* * * * * * * * * *");
-            reader.nextLine();
+            
             System.out.println("Enter the ID of the book to delete:");
             String idB = reader.nextLine();
             boolean deleted = controller.deleteBook(idB);
@@ -456,7 +456,7 @@ public class Main{
             System.out.println("* * * * * * * * * * * *");
             System.out.println("*  Delete a magazine  *");
             System.out.println("* * * * * * * * * * * *");
-            reader.nextLine();
+            
             System.out.println("Enter the ID of the magazine to delete:");
             String idM = reader.nextLine();
             boolean deleted = controller.deleteMagazine(idM);
@@ -505,6 +505,8 @@ public class Main{
         System.out.println("* - Magazine subscription cancellation  *");
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
 
+        reader.nextLine();
+        
         String view2 = controller.getUsers();
         System.out.println(view2);
 

@@ -505,8 +505,6 @@ public class Main{
         System.out.println("* - Magazine subscription cancellation  *");
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
 
-        reader.nextLine();
-        
         String view2 = controller.getUsers();
         System.out.println(view2);
 

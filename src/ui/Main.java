@@ -329,6 +329,9 @@ public class Main{
 
             System.out.println("Enter the review:");
             String reviewShortModify = reader.next();
+            
+            reader.nextLine();
+
             System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
             int genderIndexModify = reader.nextInt();
             System.out.println("Enter the selling value:");

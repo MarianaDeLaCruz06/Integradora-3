@@ -118,9 +118,8 @@ public class Main{
                 case 8:
                    System.out.println("1. Type product (Book or Magazine) and number of pages read");
                    System.out.println("2. Inform the genre of book and category of magazine most read");
-                   System.out.println("3. Report the Top 5 most read books and Top 5 most read magazines on the platform");
-                   System.out.println("4. ");
-                   System.out.println();
+                   System.out.println("3. Number of books sold and total sales value ($).");
+                   System.out.println("4. Number of active subscriptions and total value paid for subscriptions ($) paid for subscriptions ($)");
 
                    int optionRead = reader.nextInt();
 
@@ -134,14 +133,10 @@ public class Main{
                     break;
 
                     case 3:
-                        
-                    break;
-
-                    case 4:
                         sellingBooks();
                     break;
 
-                    case 5:
+                    case 4:
                         numSubsActiveValueTotal();
                     break;
 
@@ -204,7 +199,8 @@ public class Main{
 
         reader.nextLine();
 
-        System.out.println("Enter the book ID:");
+        System.out.println("Enter the book ID   example: 67F");
+        System.out.println("Two numbers from 1 to 9 and one letter from A to F");
         String idB = reader.nextLine();
         System.out.println("Enter the book name:");
         String nameBP = reader.nextLine();
@@ -251,7 +247,8 @@ public class Main{
 
         reader.nextLine();
 
-        System.out.println("Enter the ID:");
+        System.out.println("Enter the magazine ID   example: 67F");
+        System.out.println("Two numbers from 1 to 9 and one letter from A to F");
         String idM = reader.nextLine();
         System.out.println("Enter the name:");
         String namePB= reader.nextLine();
@@ -311,7 +308,8 @@ public class Main{
 
             reader.nextLine();
 
-            System.out.println("Enter the book ID:");
+            System.out.println("Enter the book ID   example: 67F");
+            System.out.println("Two numbers from 1 to 9 and one letter from A to F");
             String idBModify = reader.nextLine();
             System.out.println("Enter the book name:");
             String nameBPModify = reader.nextLine();
@@ -365,7 +363,10 @@ public class Main{
             System.out.println("Select the magazine you werw saying to modify");
             int optionMModify = reader.nextInt();
 
-            System.out.println("Enter the ID:");
+            reader.nextLine();
+
+            System.out.println("Enter the magazine ID   example: 67F");
+            System.out.println("Two numbers from 1 to 9 and one letter from A to F");
             String idMModify = reader.nextLine();
             System.out.println("Enter the name:");
             String namePBModify = reader.nextLine();
@@ -651,8 +652,6 @@ public class Main{
     public void sellingBooks() {
         System.out.println(controller.sellingBooks());
     }
-
-
 
     public void numSubsActiveValueTotal(){
         System.out.println(controller.numSubsActiveValueTotal());

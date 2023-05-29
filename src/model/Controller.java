@@ -3,17 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-import org.w3c.dom.UserDataHandler;
-
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.text.SimpleDateFormat;
 
 public class Controller{
 
     private ArrayList<User> listAllUsers;
     private ArrayList<BibliographicProducts> listAllBibliographicProducts;
-    private ArrayList<Bill> listAllBill;
 
     private SimpleDateFormat simpleDateFormat;
 
@@ -304,16 +299,10 @@ public class Controller{
                     Bill newBill = new Bill(Calendar.getInstance(), product,namebuyer);
                     System.out.println(newBill.toString());
                 }
-                // wasBuy = true;
-            }
-
-            /* 
-            if (wasBuy){
-                System.out.println(user.getName());
-                System.out.println(product.getNameBP());
                 
             }
-            */
+
+          
         }
     }
 
@@ -807,13 +796,13 @@ public class Controller{
     /**
      * Identifies a bibliographic product by its position in a user's list.
      *
-     * @param ccUser The credit card number of the user.
+     * @param ccUser The ID number of the user.
      * @param row    The row position of the product in the user's list.
      * @param column The column position of the product in the user's list.
      * @return Returns the identified bibliographic product as a string.
      */
 
-    public String identificarProducto(String ccUser, int fila, int columna) {
+    public String identifyProduct(String ccUser, int row, int column) {
         String msg = "";
         User user = null;
     
@@ -827,14 +816,14 @@ public class Controller{
         if (user != null) {
             BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
           
-            BibliographicProducts product = listOfBiblio[fila][columna];
+            BibliographicProducts product = listOfBiblio[row][column];
             if (product != null) {
                 msg = product.getNameBP();
             } else {
-                msg = "No hay producto en la posición especificada";
+                msg = "No product in the specified position";
             }
         } else {
-            msg = "Usuario no encontrado";
+            msg = "User not found";
         }
     
         return msg;
@@ -844,11 +833,13 @@ public class Controller{
     /**
      * Retrieves the number of pages of a bibliographic product.
      *
-     * @param identificarProducto The identifier of the bibliographic product.
+     * @param ccUser The ID number of the user.
+     * @param row    The row position of the product in the user's list.
+     * @param column The column position of the product in the user's list.
      * @return Returns the number of pages of the product.
      */
 
-    public int cantidadPaginas(String ccUser, int fila, int columna) {
+    public int cantPages(String ccUser, int row, int column) {
         int msg = 0;
         User user = null;
     
@@ -861,8 +852,8 @@ public class Controller{
     
         if (user != null) {
             BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
-            if (fila >= 0 && fila < listOfBiblio.length && columna >= 0 && columna < listOfBiblio[fila].length) {
-                BibliographicProducts product = listOfBiblio[fila][columna];
+            if (row >= 0 && row < listOfBiblio.length && column >= 0 && column < listOfBiblio[row].length) {
+                BibliographicProducts product = listOfBiblio[row][column];
                 if (product != null) {
                     msg = product.getNumPages();
                 } else {
@@ -875,17 +866,6 @@ public class Controller{
             msg = -1; // Valor predeterminado para indicar que no se encontró el usuario
         }
     
-        return msg;
-    }
-
-    /**
-     * Retrieves the name of a bibliographic product.
-     *
-     * @param identificarProducto The identifier of the bibliographic product.
-     * @return Returns the name of the product.
-     */
-    public String nombreProductoBibliografico(String identificarProducto){
-        String msg = "";
         return msg;
     }
 

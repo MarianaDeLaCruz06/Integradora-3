@@ -181,7 +181,7 @@ public class Main{
         String cc = reader.nextLine();
 
         Calendar date = Calendar.getInstance();
-        System.out.println(date);
+        System.out.println(controller.changeFormat(date));
 
         if(controller.createUser(userType, name, cc, date)){
             System.out.println("The User has been registered");

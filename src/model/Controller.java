@@ -15,6 +15,7 @@ public class Controller{
     public Controller(){
         listAllUsers = new ArrayList<>();
         listAllBibliographicProducts = new ArrayList<>();
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         testCase();
     }
 

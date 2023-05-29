@@ -2,6 +2,7 @@ package model;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 public abstract class BibliographicProducts implements Comparable<BibliographicProducts> {
     
@@ -13,6 +14,7 @@ public abstract class BibliographicProducts implements Comparable<BibliographicP
     private int acumReadPages;
 
     private DateFormat format;
+    private SimpleDateFormat simpleDateFormat;
 
     public BibliographicProducts(String id, String nameBP, int numPages, Calendar publicateDate, String URL, int acumReadPages){
 
@@ -22,6 +24,7 @@ public abstract class BibliographicProducts implements Comparable<BibliographicP
         this.publicateDate = publicateDate;
         this.URL = URL;
         this.acumReadPages = 0;
+        simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         
     }
 
@@ -85,7 +88,7 @@ public abstract class BibliographicProducts implements Comparable<BibliographicP
         return "BibliographicProducts id=" + id 
                 + ", nameBP=" + nameBP 
                 + ", numPages=" + numPages 
-                + ", publicateDate=" + publicateDate
+                + ", publicateDate=" + changeFormat(publicateDate)
                 + ", URL" + URL
                 + ", Acumulate Read Pages" + acumReadPages;
     }
@@ -93,6 +96,11 @@ public abstract class BibliographicProducts implements Comparable<BibliographicP
     @Override
     public int compareTo(BibliographicProducts o) {
         return this.getPublicateDate().compareTo(o.getPublicateDate());
+    }
+
+    public String changeFormat(Calendar date){
+        String formatDate = simpleDateFormat.format(date.getTime());
+        return formatDate;
     }
 
     

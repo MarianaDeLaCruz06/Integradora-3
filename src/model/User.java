@@ -144,7 +144,7 @@ public abstract class User {
     public String toString() {
         String msg = "";
         
-        msg = "\n Name User:" + name + "\n CC:" + cc + "\n Date:" + date;
+        msg = "\n Name User:" + name + "\n CC:" + cc + "\n Date:" + changeFormat(date);
         
         return msg;
     }

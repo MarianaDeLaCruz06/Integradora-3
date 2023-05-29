@@ -324,16 +324,17 @@ public class Main{
 
             System.out.println("Enter the URL:");
             String URLBModify = reader.next();
-            System.out.println("Enter the accumulated read pages:");
-            int acumReadPagesBModify = reader.nextInt();
+            
+            int acumReadPagesBModify = 0;
+
             System.out.println("Enter the review:");
             String reviewShortModify = reader.next();
             System.out.println("Enter the genre (1. Science Fiction, 2. Fantasy, 3. Historical novel):");
             int genderIndexModify = reader.nextInt();
             System.out.println("Enter the selling value:");
             double sellingValueModify = reader.nextDouble();
-            System.out.println("Enter the number of copies:");
-            int numCopiesModify = reader.nextInt();
+            
+            int numCopiesModify = 0;
     
             
             if (controller.modifyBook(optionModify, idBModify, nameBPModify, numPagesBModify, dayBModify, monthBModify, yearBModify, URLBModify, acumReadPagesBModify, reviewShortModify, genderIndexModify, sellingValueModify, numCopiesModify)) {
@@ -381,8 +382,9 @@ public class Main{
 
             System.out.println("Enter the URL:");
             String URLMModify = reader.nextLine();
-            System.out.println("Enter the accumulated read pages:");
-            int acumReadPagesMModify = reader.nextInt();
+         
+            int acumReadPagesMModify = 0;
+
             System.out.println("Enter the category index (1. Varieties, 2. Design, 3. Scientific):");
             int categoryIndexModify = reader.nextInt();
             System.out.println("Enter the value of subscription:");
@@ -392,8 +394,8 @@ public class Main{
             
             System.out.println("Enter the emission period:");
             String emissionPeriodModify = reader.nextLine();
-            System.out.println("Enter the number of subscriptions:");
-            int numSubscriptionModify = reader.nextInt();
+            
+            int numSubscriptionModify = 0;
     
             // Registrar la nueva revista en la biblioteca
             boolean magazineModify = controller.modifyMagazine(optionMModify,idMModify, namePBModify, numPagesMModify, dayMModify, monthMModify, yearMModify, URLMModify, acumReadPagesMModify, categoryIndexModify, valueSubscriptionModify, emissionPeriodModify, numSubscriptionModify);

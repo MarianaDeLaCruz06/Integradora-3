@@ -502,7 +502,6 @@ public class Main{
 
     public void cancelSubs() {
 
-        reader.nextLine();
 
         System.out.println("* * * * * * * * * * * * * * * * * * * * *");
         System.out.println("* - Magazine subscription cancellation  *");
@@ -510,6 +509,8 @@ public class Main{
 
         String view2 = controller.getUsers();
         System.out.println(view2);
+
+        reader.nextLine();
 
         System.out.println("Write the id of the person");
         String ccUser = reader.nextLine();
@@ -521,7 +522,7 @@ public class Main{
         System.out.println("Write the id of the magazine you want to unsubscribe");
         String idBP = reader.nextLine();
 
-        if(controller.cancelSubs(ccUser,idBP)){
+        if(controller.cancelSubs(ccUser, idBP)){
             System.out.println("The unsubscription of the magazine was successful");
         }else{
             System.out.println("An error occurred, the journal could not be deleted");

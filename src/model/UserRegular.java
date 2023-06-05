@@ -202,7 +202,11 @@ public class UserRegular extends User{
             }
         }
         return false; // Subscription not found with
+<<<<<<< HEAD
     } 
+=======
+    }
+>>>>>>> f78891ba2c529d00d0691b4a405225ad36110044
 
 
     public void insertionSort(){
@@ -232,7 +236,7 @@ public class UserRegular extends User{
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     if (cont < listOfBiblioProducts.length) {
-                     matrix[i][j] = listOfBiblioProducts[cont];
+                        matrix[i][j] = listOfBiblioProducts[cont];
                         cont++;
                     }      
                 }
@@ -244,6 +248,7 @@ public class UserRegular extends User{
     
     @Override
     public String getProducts(){
+        initMatrix();
         String msg = "[  _  ][  0  ][  1  ][  2  ][  3  ][  4  ]\n";
         for (int i = 0; i < getListOfBiblio().length; i++) {
             msg += "[  " + i +  "  ]";

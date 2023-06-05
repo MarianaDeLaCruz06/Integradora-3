@@ -194,15 +194,15 @@ public class UserRegular extends User{
      */
     @Override
     public boolean cancelSubscription(String idBP) {
-        
         for (int i = 0; i < listOfBiblioProducts.length; i++) {
-            if (listOfBiblioProducts[i].getId().equals(idBP)) {
+            if (listOfBiblioProducts[i] != null && listOfBiblioProducts[i].getId().equals(idBP)) {
                 listOfBiblioProducts[i] = null;
-                return true; // Se canceló la suscripción
+                initMatrix();
+                return true; // Subscription canceled
             }
         }
-        return false; // No se encontró la suscripción con ese idBP
-    }   
+        return false; // Subscription not found with
+    } 
 
 
     public void insertionSort(){

@@ -202,11 +202,8 @@ public class UserRegular extends User{
             }
         }
         return false; // Subscription not found with
-<<<<<<< HEAD
+
     } 
-=======
-    }
->>>>>>> f78891ba2c529d00d0691b4a405225ad36110044
 
 
     public void insertionSort(){

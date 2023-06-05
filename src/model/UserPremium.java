@@ -201,6 +201,7 @@ public class UserPremium extends User{
         for (int i = 0; i < listAllBibliographicProducts.size(); i++) {
             if (listAllBibliographicProducts.get(i).getId().equals(idBP)) {
                 listAllBibliographicProducts.remove(i);
+                initMatrix();
                 return true; // Se canceló la suscripción
             }
         }

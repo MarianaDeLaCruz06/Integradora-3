@@ -810,17 +810,20 @@ public class Controller{
         for (User currentUser : listAllUsers) {
             if (currentUser.getCc().equals(ccUser)) {
                 user = currentUser;
-                break; // Salir del bucle después de encontrar al usuario
+                 // Salir del bucle después de encontrar al usuario
             }
         }
     
         if (user != null) {
+            ArrayList<BibliographicProducts[][]> listAllBiblio = user.getListAllBiblio();
             BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
-          
             BibliographicProducts product = listOfBiblio[row][column];
+            BibliographicProducts products = listAllBiblio.get(0)[row][column];
             if (product != null) {
                 msg = product.getNameBP();
-            } else {
+            } else if(products != null) {
+                msg = products.getNameBP();
+            }else{
                 msg = "No product in the specified position";
             }
         } else {
@@ -847,17 +850,21 @@ public class Controller{
         for (User currentUser : listAllUsers) {
             if (currentUser.getCc().equals(ccUser)) {
                 user = currentUser;
-                break; // Salir del bucle después de encontrar al usuario
+                
             }
         }
     
         if (user != null) {
+            ArrayList<BibliographicProducts[][]> listAllBiblio = user.getListAllBiblio();
             BibliographicProducts[][] listOfBiblio = user.getListOfBiblio();
             if (row >= 0 && row < listOfBiblio.length && column >= 0 && column < listOfBiblio[row].length) {
                 BibliographicProducts product = listOfBiblio[row][column];
+                BibliographicProducts products = listAllBiblio.get(0)[row][column];
                 if (product != null) {
                     msg = product.getNumPages();
-                } else {
+                } else if(products != null){
+                    msg = products.getNumPages();
+                }else{
                     msg = -1; // Valor predeterminado para indicar que no hay producto en la posición especificada
                 }
             } else {
